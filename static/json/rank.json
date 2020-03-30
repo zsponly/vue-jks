@@ -1,0 +1,43 @@
+[{
+  "name": "鳌峰中路",
+  "id": "001",
+  "flow": 90,
+  "speed": 30,
+  "status": 1
+}, {
+  "name": "锦城南路",
+  "id": "002",
+  "flow": 60,
+  "speed": 25, 
+  "status": 2
+  }, {
+  "name": "状元南路",
+  "id": "003",
+  "flow": 40,
+  "speed": 40,
+  "status": 3
+  }, {
+  "name": "状元南路",
+  "id": "004",
+  "flow": 50,
+  "speed": 45,
+  "status": 4
+  }, {
+  "name": "状元南路",
+  "id": "005",
+  "flow": 43,
+  "speed": 55,
+  "status": 5
+  }, {
+  "name": "状元南路",
+  "id": "006",
+  "flow": 10,
+  "speed": 20,
+  "status": 6
+  }, {
+  "name": "状元南路",
+  "id": "007",
+  "flow": 25,
+  "speed": 60,
+  "status": 7
+}]

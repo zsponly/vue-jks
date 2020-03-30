@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import '../static/font/weathericons-regular-webfont.eot'
+import '../static/css/weather-icons.css'
 import App from './App'
 import router from './router'
 import echarts from 'echarts'
@@ -18,6 +20,7 @@ Vue.prototype.$papa = papa;
 Vue.prototype.$saver = saver;
 
 Vue.use(ElementUI);
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

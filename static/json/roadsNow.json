@@ -1,0 +1,309 @@
+[{
+  "id": 1,
+  "name": "鳌峰中路",
+  "start": {
+    "longitude": 118.762758,
+    "latitude": 30.946577
+  },
+  "end": {
+    "longitude": 118.766945,
+    "latitude": 30.946821
+  },
+  "now": {
+    "id": 1,
+    "lid": 1,
+    "count": 8,
+    "speed": 49.88,
+    "index": 2.33,
+    "status": 2,
+    "lanecount": "0:0:4:3:1",
+    "bigcount": 1,
+    "feature1": 0.16,
+    "feature2": 0.125,
+    "feature3": 2.64,
+    "time": "2019-07-02T03:00:00.000+0000",
+    "timeLong": 0
+  },
+  "length": 3891,
+  "lane_count": 5
+}, {
+  "id": 2,
+  "name": "宝城路",
+  "start": {
+    "longitude": 118.743255,
+    "latitude": 30.954583
+  },
+  "end": {
+    "longitude": 118.732421,
+    "latitude": 30.949837
+  },
+  "now": {
+    "id": 2,
+    "lid": 2,
+    "count": 10,
+    "speed": 45.21,
+    "index": 2.18,
+    "status": 2,
+    "lanecount": "3:0:7",
+    "bigcount": 0,
+    "feature1": 0.22,
+    "feature2": 0,
+    "feature3": 8.22,
+    "time": "2019-07-02T03:00:00.000+0000",
+    "timeLong": 0
+  },
+  "length": 2386,
+  "lane_count": 3
+}, {
+  "id": 3,
+  "name": "宝城路",
+  "start": {
+    "longitude": 118.732421,
+    "latitude": 30.949837
+  },
+  "end": {
+    "longitude": 118.711073,
+    "latitude": 30.939737
+  },
+  "now": {
+    "id": 3,
+    "lid": 3,
+    "count": 5,
+    "speed": 35.1,
+    "index": 0.69,
+    "status": 1,
+    "lanecount": "0:0:5",
+    "bigcount": 0,
+    "feature1": 0.14,
+    "feature2": 0,
+    "feature3": 5.56,
+    "time": "2019-07-02T03:00:00.000+0000",
+    "timeLong": 0
+  },
+  "length": 2902.7,
+  "lane_count": 4
+}, {
+  "id": 4,
+  "name": "宝城路",
+  "start": {
+    "longitude": 118.711073,
+    "latitude": 30.939737
+  },
+  "end": {
+    "longitude": 118.666598,
+    "latitude": 30.938629
+  },
+  "now": {
+    "id": 4,
+    "lid": 4,
+    "count": 7,
+    "speed": 55.21,
+    "index": 0.31,
+    "status": 1,
+    "lanecount": "3:3:1",
+    "bigcount": 0,
+    "feature1": 0.13,
+    "feature2": 0,
+    "feature3": 0.89,
+    "time": "2019-07-02T03:00:00.000+0000",
+    "timeLong": 0
+  },
+  "length": 5231.88,
+  "lane_count": 3
+}, {
+  "id": 5,
+  "name": "水阳江西大道",
+  "start": {
+    "longitude": 118.732417,
+    "latitude": 30.949864
+  },
+  "end": {
+    "longitude": 118.737923,
+    "latitude": 30.943639
+  },
+  "now": {
+    "id": 5,
+    "lid": 5,
+    "count": 8,
+    "speed": 43.69,
+    "index": 0.84,
+    "status": 1,
+    "lanecount": "2:5:1",
+    "bigcount": 0,
+    "feature1": 0.18,
+    "feature2": 0,
+    "feature3": 2.89,
+    "time": "2019-07-02T03:00:00.000+0000",
+    "timeLong": 0
+  },
+  "length": 3317,
+  "lane_count": 3
+}, {
+  "id": 6,
+  "name": "水阳江西大道",
+  "start": {
+    "longitude": 118.737923,
+    "latitude": 30.943639
+  },
+  "end": {
+    "longitude": 118.748676,
+    "latitude": 30.939551
+  },
+  "now": {
+    "id": 6,
+    "lid": 6,
+    "count": 12,
+    "speed": 44.78,
+    "index": 0.28,
+    "status": 1,
+    "lanecount": "7:4:1",
+    "bigcount": 0,
+    "feature1": 0.27,
+    "feature2": 0,
+    "feature3": 6,
+    "time": "2019-07-02T03:00:00.000+0000",
+    "timeLong": 0
+  },
+  "length": 1957,
+  "lane_count": 3
+}, {
+  "id": 7,
+  "name": "水阳江南大道",
+  "start": {
+    "longitude": 118.748676,
+    "latitude": 30.939551
+  },
+  "end": {
+    "longitude": 118.756294,
+    "latitude": 30.93674
+  },
+  "now": {
+    "id": 7,
+    "lid": 7,
+    "count": 39,
+    "speed": 23.15,
+    "index": 5.55,
+    "status": 3,
+    "lanecount": "21:6:12",
+    "bigcount": 2,
+    "feature1": 1.68,
+    "feature2": 0.05,
+    "feature3": 38,
+    "time": "2019-07-02T03:00:00.000+0000",
+    "timeLong": 0
+  },
+  "length": 3125,
+  "lane_count": 3
+}, {
+  "id": 8,
+  "name": "水阳江南大道",
+  "start": {
+    "longitude": 118.756294,
+    "latitude": 30.93674
+  },
+  "end": {
+    "longitude": 118.768735,
+    "latitude": 30.935323
+  },
+  "now": {
+    "id": 8,
+    "lid": 8,
+    "count": 28,
+    "speed": 33.1,
+    "index": 4.01,
+    "status": 3,
+    "lanecount": "4:12:4:8",
+    "bigcount": 2,
+    "feature1": 0.85,
+    "feature2": 0.0513,
+    "feature3": 11,
+    "time": "2019-07-02T03:00:00.000+0000",
+    "timeLong": 0
+  },
+  "length": 2219.9,
+  "lane_count": 4
+}, {
+  "id": 9,
+  "name": "水阳江南大道",
+  "start": {
+    "longitude": 118.768735,
+    "latitude": 30.935323
+  },
+  "end": {
+    "longitude": 118.779632,
+    "latitude": 30.936461
+  },
+  "now": {
+    "id": 9,
+    "lid": 9,
+    "count": 55,
+    "speed": 18.19,
+    "index": 6.91,
+    "status": 4,
+    "lanecount": "31:5:19",
+    "bigcount": 2,
+    "feature1": 3.02,
+    "feature2": 0.0364,
+    "feature3": 112.89,
+    "time": "2019-07-02T03:00:00.000+0000",
+    "timeLong": 0
+  },
+  "length": 1941,
+  "lane_count": 3
+}, {
+  "id": 10,
+  "name": "水阳江南大道",
+  "start": {
+    "longitude": 118.779632,
+    "latitude": 30.936461
+  },
+  "end": {
+    "longitude": 118.793124,
+    "latitude": 30.940163
+  },
+  "now": {
+    "id": 10,
+    "lid": 10,
+    "count": 32,
+    "speed": 21.66,
+    "index": 4.11,
+    "status": 3,
+    "lanecount": "11:2:10:9",
+    "bigcount": 0,
+    "feature1": 1.48,
+    "feature2": 0,
+    "feature3": 12.5,
+    "time": "2019-07-02T03:00:00.000+0000",
+    "timeLong": 0
+  },
+  "length": 4159,
+  "lane_count": 4
+}, {
+  "id": 11,
+  "name": "水阳江东大道",
+  "start": {
+    "longitude": 118.793124,
+    "latitude": 30.940163
+  },
+  "end": {
+    "longitude": 118.797113,
+    "latitude": 30.949013
+  },
+  "now": {
+    "id": 11,
+    "lid": 11,
+    "count": 20,
+    "speed": 21.53,
+    "index": 3.98,
+    "status": 2,
+    "lanecount": "1:2:5:12",
+    "bigcount": 1,
+    "feature1": 0.93,
+    "feature2": 0.05,
+    "feature3": 18.5,
+    "time": "2019-07-02T03:00:00.000+0000",
+    "timeLong": 0
+  },
+  "length": 3621,
+  "lane_count": 4
+}]

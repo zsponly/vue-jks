@@ -1,11 +1,18 @@
 <template>
   <div id="float">
+    <el-row>
+      <span>浮动车数据展示</span>
+    </el-row>
+    <el-row>
+      <el-col :span="24">
+        <div class="fmap-wrapper">
+          <div id="fmap" ref="fmap">
 
-    <div class="fmap-wrapper">
+          </div>
+        </div>
 
-      <div id="float-map" ref="fmap"></div>
-
-    </div>
+      </el-col>
+    </el-row>
 
   </div>
 </template>
@@ -35,13 +42,13 @@
     },
     methods: {
       load() {
-        this.$axios.get("http://localhost:8081/car/now")
-          .then((res) => { // 用箭头函数的形式，内部this指向vue对象
-            
-            res = res.data.data;
+        this.$axios.get("http://localhost:8080/static/json/heat.json")
+          .then((res) => {  // 用箭头函数的形式，内部this指向vue对象
+            console.log('JSON数据', res);
+            res = res.data;
             // 我这里的heat.json是对象，没有列表形式的，没有测试，但是下面的代码是我按列表写的
             for (var i = 0; i < res.length; i++) {
-              var point = res[i].position;
+              var point = res[i];
               this.floats.push({
                 geometry: {
                   type: 'Point',
@@ -52,7 +59,6 @@
                 }
               });
             }
-            console.log('浮动车数据：', this.floats);
           })
           .then(() => {
             // 渲染地图
@@ -99,7 +105,6 @@
             0.9: 'rgba(217, 29, 28, 1)'
           }
         });
-        
         view.addLayer(vm.heatmap);
         vm.heatmap.setData(vm.floats);
       }
@@ -110,22 +115,22 @@
 
 <style scoped>
   #float {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 100%;
-    height: auto;
-    box-sizing: border-box;
+    width: 1140px;
+    margin: 0 auto;
   }
 
-  #float-map {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .el-row {
+    margin-bottom: 20px;
+  }
+
+  .fmap-wrapper {
+    border-radius: 4px;
+    border: solid 10px #d3dce6;
+  }
+
+  #fmap {
     width: 100%;
-    min-height: 100%;
-    height: auto;
+    height: 512px;
   }
 
 </style>
