@@ -35,7 +35,7 @@
     },
     methods: {
       load() {
-        this.$axios.get("http://localhost:8081/car/now")
+        this.$axios.get("http://47.97.221.36:8081/car/now")
           .then((res) => { // 用箭头函数的形式，内部this指向vue对象
             
             res = res.data.data;

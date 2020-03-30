@@ -356,7 +356,7 @@
           })
 
         // 获取实时道路数据
-        this.$axios.get('http://localhost:8081/load/selNow')
+        this.$axios.get('http://47.97.221.36:8081/load/selNow')
           .then((res) => {
             var loads = res.data.data;
             for (var i = 0; i < loads.length; i++) {
@@ -375,7 +375,7 @@
 
         // 可以默认发过来按照流量降速的数据
         // 获取实时排名数据
-         this.$axios.get('http://localhost:8081/rank/CSRank/CD')
+         this.$axios.get('http://47.97.221.36:8081/rank/CSRank/CD')
           .then((res) => {
             res = res.data.data;
             this.rankData=[];
@@ -395,7 +395,7 @@
           });
 
         // 获取路段拥堵预测数据
-         this.$axios.get('http://localhost:8081/rank/CRankPre/'+3+"/"+"CD")
+         this.$axios.get('http://47.97.221.36:8081/rank/CRankPre/'+3+"/"+"CD")
           .then((res) => {
             res = res.data.data;
             this.forecastData = [];
@@ -413,7 +413,7 @@
           });
 
         // 获取道路态势分布数据
-        this.$axios.get('http://localhost:8081/together/featureNow')
+        this.$axios.get('http://47.97.221.36:8081/together/featureNow')
           .then((res) => {
             console.log('态势数据：', res.data);
             res = res.data.data;
@@ -855,7 +855,7 @@
 
         // 然后就可以在这里发请求了
         // 获取实时排名数据
-        this.$axios.get('http://localhost:8081/rank/CSRank/'+order)
+        this.$axios.get('http://47.97.221.36:8081/rank/CSRank/'+order)
           .then((res) => {
             res = res.data.data;
             this.rankData=[];
@@ -887,7 +887,7 @@
         order = 'C' + order;
         // 然后就可以在这里发请求了
         // 获取预测排名数据
-        this.$axios.get('http://localhost:8081/rank/CRankPre/'+3+"/"+order)
+        this.$axios.get('http://47.97.221.36:8081/rank/CRankPre/'+3+"/"+order)
           .then((res) => {
             res = res.data.data;
             this.forecastData = [];

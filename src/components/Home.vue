@@ -258,7 +258,7 @@
         this.$options.methods.updateChart(this, this.step, newVal);
         if (newVal) {
           // 请求当前时间往后this.step间隔的预测结果
-          this.$axios.get('http://localhost:8081/together/prediction/'+this.step)
+          this.$axios.get('http://47.97.221.36:8081/together/prediction/'+this.step)
             .then((res) => {
               res = res.data.data;
               for (var i = 0; i < res.length; i++) {
@@ -277,7 +277,7 @@
             });
         } else {
           // 请求当前时间的结果
-          this.$axios.get('http://localhost:8081/load/now')
+          this.$axios.get('http://47.97.221.36:8081/load/now')
             .then((res) => {
               res = res.data.data;
               for (var i = 0; i < res.length; i++) {
@@ -317,7 +317,7 @@
 
         if (this.forecastModeOn) {
           // 预测模式
-          this.$axios.get('http://localhost:8081/together/prediction/'+this.step)
+          this.$axios.get('http://47.97.221.36:8081/together/prediction/'+this.step)
           .then((res) => {
             res = res.data.data;
             for (var i = 0; i < res.length; i++) {
@@ -336,7 +336,7 @@
           });
         } else {
           // 实时模式
-          this.$axios.get('http://localhost:8081/load/now')
+          this.$axios.get('http://47.97.221.36:8081/load/now')
           .then((res) => {
             res = res.data.data;
             for (var i = 0; i < res.length; i++) {
@@ -394,7 +394,7 @@
           ]
         }
         // 2.获取路网流量数据，注意应该发送有时间间隔信息
-        vm.$axios.get('http://localhost:8081/together/countNowaday')
+        vm.$axios.get('http://47.97.221.36:8081/together/countNowaday')
           .then((res) => {
             res = res.data.data; //获取到数据
 
@@ -411,7 +411,7 @@
           })
           .then(() => {
             // 2.获取路网上周同期流量数据
-            vm.$axios.get('http://localhost:8081/together/countLast')
+            vm.$axios.get('http://47.97.221.36:8081/together/countLast')
               .then((res) => {
                 res = res.data.data; //获取到数据
                 var date = new Date(res[0].timeLong);
@@ -429,7 +429,7 @@
               })
               .then(() => {
                 // 3.获取路网态势分布数据
-                vm.$axios.get('http://localhost:8081/together/featureNow')
+                vm.$axios.get('http://47.97.221.36:8081/together/featureNow')
                   .then((res) => {
                     console.log('态势数据：', res.data);
                     res = res.data.data;
@@ -465,7 +465,7 @@
                     if (forecastModeOn) { // 若开启预测模式则同时更新预测数据
                       // vm.$axios.get('forecastInterface/step')
                       // 这里直接使用了随机数模拟生成新数据
-                      vm.$axios.get('http://localhost:8081/together/featurePre/'+vm.step)
+                      vm.$axios.get('http://47.97.221.36:8081/together/featurePre/'+vm.step)
                       .then((res)=>{
                         //console.log("forcast:",res.data);
                         res=res.data.data;
@@ -517,7 +517,7 @@
       },
       load() {
         // 获取实时道路数据
-        this.$axios.get('http://localhost:8081/load/now')
+        this.$axios.get('http://47.97.221.36:8081/load/now')
           .then((res) => {
             var loads = res.data.data;
             //console.log('道路流量数据:', loads);
@@ -545,7 +545,7 @@
           });
 
         // 获取道路特征数据
-        this.$axios.get('http://localhost:8081/together/featureNow')
+        this.$axios.get('http://47.97.221.36:8081/together/featureNow')
           .then((res) => {
             res = res.data.data;
             console.log('特征数据：', res);
@@ -554,11 +554,12 @@
             this.featureData.variance = res.feature3
             this.featureData.speed = res.speed
             this.featureData.flow = res.count
+            console.log('道路特征', this.featureData);
           }).catch((err) => {
             console.log(err)
           });
         // 获取道路流量数据，注意应该发送有时间间隔信息this.step
-        this.$axios.get('http://localhost:8081/together/countNowaday')
+        this.$axios.get('http://47.97.221.36:8081/together/countNowaday')
           .then((res) => {
             console.log(res)
             res = res.data.data; //获取到数据
@@ -575,7 +576,7 @@
           })
           .then(() => {
             // 请求上周同期数据
-            this.$axios.get('http://localhost:8081/together/countLast')
+            this.$axios.get('http://47.97.221.36:8081/together/countLast')
               .then((res) => {
                 res = res.data.data; //获取到数据
                 var date = new Date(res[0].timeLong);
@@ -593,7 +594,7 @@
               })
               .then(() => {
                 // 获取道路态势分布数据
-                this.$axios.get('http://localhost:8081/together/featureNow')
+                this.$axios.get('http://47.97.221.36:8081/together/featureNow')
                   .then((res) => {
                     console.log('态势数据：', res.data);
                     res = res.data.data;
@@ -660,7 +661,7 @@
           // 这里依旧使用随机数生成随机数据进行测试
           // this.selRoad[0].flowForecast = (Math.random() * 20 + 30).toFixed(2);
           // this.selRoad[0].statusForecast = Math.floor(Math.random() * 8);
-          this.$axios.get('http://localhost:8081/together/predictionRoad/'+this.step+'/'+this.selRoad[0].id)
+          this.$axios.get('http://47.97.221.36:8081/together/predictionRoad/'+this.step+'/'+this.selRoad[0].id)
           .then((res)=>{
             res=res.data.data;
             this.selRoad[0].flowForecast = res.prediction.count;
@@ -688,7 +689,7 @@
         //   });
 
         // 获取道路流量数据
-        this.$axios.get('http://localhost:8081/load/queryWholedayByLid/'+this.selRoad[0].id)
+        this.$axios.get('http://47.97.221.36:8081/load/queryWholedayByLid/'+this.selRoad[0].id)
           .then((res) => {
             res = res.data.data; //获取到数据
             console.log("该路段数据：",res);
@@ -707,7 +708,7 @@
           })
           .then(() => {
             // 请求上周同期数据
-            this.$axios.get('http://localhost:8081/load/queryLastDayByLid/'+this.selRoad[0].id)
+            this.$axios.get('http://47.97.221.36:8081/load/queryLastDayByLid/'+this.selRoad[0].id)
               .then((res) => {
                 res = res.data.data; //获取到数据
                 console.log("该路段上周数据：",res);
@@ -1496,6 +1497,10 @@
   }
 
   /* 自定义elementUI样式开始 */
+  .el-tabs {
+    width: 100%;
+  }
+
   .el-tabs>>>.el-tabs__content {
     padding: 0;
   }
@@ -1563,12 +1568,14 @@
   }
 
   #speed-chart {
-    width: 310px;
+    /* width: 310px; */
+    width: calc(100% - 10px);
     height: 210px;
   }
 
   #flow-chart {
-    width: 310px;
+    /* width: 310px; */
+    width: calc(100% - 10px);
     height: 210px;
   }
 

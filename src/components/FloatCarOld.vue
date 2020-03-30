@@ -42,7 +42,7 @@
     },
     methods: {
       load() {
-        this.$axios.get("http://localhost:8080/static/json/heat.json")
+        this.$axios.get("http://47.97.221.36:8080/static/json/heat.json")
           .then((res) => {  // 用箭头函数的形式，内部this指向vue对象
             console.log('JSON数据', res);
             res = res.data;

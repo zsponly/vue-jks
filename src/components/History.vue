@@ -89,7 +89,7 @@
     methods: {
       // 组件初始时获得提示集数据，比如十条道路的名字
       load() {
-        this.$axios.get('http://localhost:8081/load/queryAllName')
+        this.$axios.get('http://47.97.221.36:8081/load/queryAllName')
           .then((res) => {
             res = res.data.data;
             for(var i=0;i<res.length;i++){
@@ -160,7 +160,7 @@
         // end = this.$options.methods.formatTime(end);      // 结束时间，字符串
         // 向后台请求要查询的数据
         // 开始时间:start;结束时间:end;路段名:this.road;路段ID:this.queryID;
-        var url='http://localhost:8081/load/query/'+start+'A'+end+'/'+this.queryID
+        var url='http://47.97.221.36:8081/load/query/'+start+'A'+end+'/'+this.queryID
         console.log("url:",url);
         this.$axios.get(url)
         .then((res) => {
