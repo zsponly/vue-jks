@@ -123,10 +123,16 @@
   .el-dialog__body {
     color: #8A8C8F;
   }
+
   /* 全局dialog样式结束 */
-  
+
   .el-radio-group {
+    width: 243px;
     background-color: rgba(0, 0, 0, 0);
+  }
+
+  .el-radio-button__inner {
+    width: 81px;
   }
 
   .el-radio-button.is-active .el-radio-button__inner {

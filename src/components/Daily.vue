@@ -91,10 +91,10 @@
                 <template slot-scope="scope">
                   <div class="rank-display">
                     <div class="bar">
-                    <el-progress :percentage="scope.row.flow" :stroke-width="10" :show-text='false' :color="ranks">
-                    </el-progress>
+                      <el-progress :percentage="scope.row.flow" :stroke-width="10" :show-text='false' :color="ranks">
+                      </el-progress>
                     </div>
-                  <span>{{ scope.row.flow }}</span>
+                    <span>{{ scope.row.flow }}</span>
                   </div>
                 </template>
               </el-table-column>
@@ -102,10 +102,10 @@
                 <template slot-scope="scope">
                   <div class="rank-display">
                     <div class="bar" style="width:70%">
-                    <el-progress :percentage="scope.row.speed" :stroke-width="10" :show-text='false' :color="ranks">
-                    </el-progress>
+                      <el-progress :percentage="scope.row.speed" :stroke-width="10" :show-text='false' :color="ranks">
+                      </el-progress>
                     </div>
-                  <span>{{ scope.row.speed.toFixed(2) }}</span>
+                    <span>{{ scope.row.speed.toFixed(2) }}</span>
                   </div>
                 </template>
               </el-table-column>
@@ -129,22 +129,22 @@
           <el-table-column label="流量vec/h" align="left" sortable="custom" prop="flow">
             <template slot-scope="scope">
               <div class="rank-display">
-                  <div class="bar">
+                <div class="bar">
                   <el-progress :percentage="scope.row.flow" :stroke-width="10" :show-text='false' :color="ranks">
                   </el-progress>
-                  </div>
-                  <span>{{ scope.row.flow }}</span>
+                </div>
+                <span>{{ scope.row.flow }}</span>
               </div>
             </template>
           </el-table-column>
           <el-table-column label="车速km/h" align="left" sortable="custom">
             <template slot-scope="scope">
               <div class="rank-display">
-                  <div class="bar">
+                <div class="bar">
                   <el-progress :percentage="scope.row.speed" :stroke-width="10" :show-text='false' :color="ranks">
                   </el-progress>
-                  </div>
-                  <span>{{ scope.row.speed.toFixed(2) }}</span>
+                </div>
+                <span>{{ scope.row.speed.toFixed(2) }}</span>
               </div>
             </template>
           </el-table-column>
@@ -166,7 +166,7 @@
       <el-col :span="24">
         <div class="rank-list-forecast">
           <el-table :data="forecastData" max-height="500" :cell-style="cellStyle" :header-cell-style="rowClass"
-          @sort-change="getNewForecastRank" :default-sort="{ prop: 'flow', order: 'descending' }">
+            @sort-change="getNewForecastRank" :default-sort="{ prop: 'flow', order: 'descending' }">
             <el-table-column prop="id" label="路段ID" width="100" align="left">
             </el-table-column>
             <el-table-column prop="name" label="路段" width="180" align="left">
@@ -175,19 +175,13 @@
               <template slot-scope="scope">
                 <div class="rank-display">
                   <div class="bar">
-                  <el-progress :percentage="scope.row.flow" :stroke-width="10" :show-text='false' :color="ranks">
-                  </el-progress>
+                    <el-progress :percentage="scope.row.flow" :stroke-width="10" :show-text='false' :color="ranks">
+                    </el-progress>
                   </div>
                   <span>{{ scope.row.flow }}</span>
-              </div>
+                </div>
               </template>
             </el-table-column>
-            <!-- <el-table-column label="车速km/h" align="left" sortable="custom">
-              <template slot-scope="scope">
-                <el-progress :percentage="scope.row.speed" :stroke-width="10" :show-text='false' :color="ranks">
-                </el-progress>
-              </template>
-            </el-table-column> -->
             <el-table-column label="态势" width="120" align="left">
               <template slot-scope="scope">
                 <StatusLabel :status="+scope.row.status"></StatusLabel>
@@ -257,7 +251,7 @@
           color: '#FF0000',
           percentage: 100
         }],
-        statusArr: ['态势一', '态势二', '态势三', '态势四', '态势五', '态势六', '态势七'],
+        statusArr: ['态势一', '态势二', '态势三', '态势四', '态势五'/*, '态势六', '态势七'*/],
         selStatus: '', // 要筛选的态势
       }
     },
@@ -266,7 +260,7 @@
         // 实现表格的筛选功能
         return this.roadData.filter((value) => {
           if (this.selStatus) {
-            return this.statusArr[value.status-1] === this.selStatus;
+            return this.statusArr[value.status - 1] === this.selStatus;
           } else {
             return value.status;
           }
@@ -375,17 +369,17 @@
 
         // 可以默认发过来按照流量降速的数据
         // 获取实时排名数据
-         this.$axios.get('http://47.97.221.36:8081/rank/CSRank/CD')
+        this.$axios.get('http://47.97.221.36:8081/rank/CSRank/CD')
           .then((res) => {
             res = res.data.data;
-            this.rankData=[];
-            for(var i=0;i<res.length;i++){
-                this.rankData.push({
-                  name:res[i].name,
-                  id:res[i].lid,
-                  flow:res[i].count,
-                  speed:res[i].speed,
-                  status:res[i].situation
+            this.rankData = [];
+            for (var i = 0; i < res.length; i++) {
+              this.rankData.push({
+                name: res[i].name,
+                id: res[i].lid,
+                flow: res[i].count,
+                speed: res[i].speed,
+                status: res[i].situation
               })
             }
             console.log(this.rankData);
@@ -395,16 +389,16 @@
           });
 
         // 获取路段拥堵预测数据
-         this.$axios.get('http://47.97.221.36:8081/rank/CRankPre/'+3+"/"+"CD")
+        this.$axios.get('http://47.97.221.36:8081/rank/CRankPre/' + 3 + "/" + "CD")
           .then((res) => {
             res = res.data.data;
             this.forecastData = [];
-            for(var i=0;i<res.length;i++){
+            for (var i = 0; i < res.length; i++) {
               this.forecastData.push({
-                name:res[i].name,
-                id:res[i].lid,
-                flow:res[i].count,
-                status:res[i].situation
+                name: res[i].name,
+                id: res[i].lid,
+                flow: res[i].count,
+                status: res[i].situation
               })
             }
           })
@@ -418,33 +412,35 @@
             console.log('态势数据：', res.data);
             res = res.data.data;
             this.statusData.push({
-                value:res.proportion1,
-                name:"态势一"
+              value: res.proportion1,
+              name: "态势一"
             })
             this.statusData.push({
-                value:res.proportion2,
-                name:"态势二"
+              value: res.proportion2,
+              name: "态势二"
             })
             this.statusData.push({
-                value:res.proportion3,
-                name:"态势三"
+              value: res.proportion3,
+              name: "态势三"
             })
             this.statusData.push({
-                value:res.proportion4,
-                name:"态势四"
+              value: res.proportion4,
+              name: "态势四"
             })
             this.statusData.push({
-                value:res.proportion5,
-                name:"态势五"
+              value: res.proportion5,
+              name: "态势五"
+            })
+            /*
+            this.statusData.push({
+              value: res.proportion6,
+              name: "态势六"
             })
             this.statusData.push({
-                value:res.proportion6,
-                name:"态势六"
+              value: res.proportion7,
+              name: "态势七"
             })
-            this.statusData.push({
-                value:res.proportion7,
-                name:"态势七"
-            })
+            */
 
             // 绘制态势图
             this.drawStatus();
@@ -855,17 +851,17 @@
 
         // 然后就可以在这里发请求了
         // 获取实时排名数据
-        this.$axios.get('http://47.97.221.36:8081/rank/CSRank/'+order)
+        this.$axios.get('http://47.97.221.36:8081/rank/CSRank/' + order)
           .then((res) => {
             res = res.data.data;
-            this.rankData=[];
-            for(var i=0;i<res.length;i++){
-                this.rankData.push({
-                  name:res[i].name,
-                  id:res[i].lid,
-                  flow:res[i].count,
-                  speed:res[i].speed,
-                  status:res[i].situation
+            this.rankData = [];
+            for (var i = 0; i < res.length; i++) {
+              this.rankData.push({
+                name: res[i].name,
+                id: res[i].lid,
+                flow: res[i].count,
+                speed: res[i].speed,
+                status: res[i].situation
               })
             }
             console.log(this.rankData);
@@ -887,19 +883,19 @@
         order = 'C' + order;
         // 然后就可以在这里发请求了
         // 获取预测排名数据
-        this.$axios.get('http://47.97.221.36:8081/rank/CRankPre/'+3+"/"+order)
+        this.$axios.get('http://47.97.221.36:8081/rank/CRankPre/' + 3 + "/" + order)
           .then((res) => {
             res = res.data.data;
             this.forecastData = [];
-            for(var i=0;i<res.length;i++){
+            for (var i = 0; i < res.length; i++) {
               this.forecastData.push({
-                name:res[i].name,
-                id:res[i].lid,
-                flow:res[i].count,
-                status:res[i].situation
+                name: res[i].name,
+                id: res[i].lid,
+                flow: res[i].count,
+                status: res[i].situation
               })
             }
-            console.log("预报:",this.forecastData);
+            console.log("预报:", this.forecastData);
           })
           .catch((err) => {
             console.log(err);
@@ -952,6 +948,7 @@
     border: 1px solid #303030 !important;
     background-color: rgba(32, 33, 34, 0.507) !important;
     color: #ccc;
+    cursor: pointer;
   }
 
   .el-tag.on {
