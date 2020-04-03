@@ -498,10 +498,11 @@
           clearInterval(this.timer);
         }
         // 2.重新绘制
-        this.updateChart(this, newStep, this.forecastModeOn);
+        this.$options.methods.updateChart(this, newStep, this.forecastModeOn);
+        this.$options.methods.updateRoutes(this, newStep, this.forecastModeOn);
         // 3.重设计时器
         this.timer = setInterval(() => {
-          this.updateChart(this, newStep, this.forecastModeOn)
+          this.$options.methods.updateChart(this, newStep, this.forecastModeOn)
         }, newStep * 60 * 1000);
       },
       load() {
