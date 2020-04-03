@@ -42,7 +42,7 @@
     text-align: center;
     padding: 5px 0 0 5px;
     color: #fff;
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: bold;
   }
 

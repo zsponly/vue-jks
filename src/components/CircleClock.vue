@@ -11,7 +11,7 @@
         </div>
 
         <div class="weather-detail">
-          <span>{{ tem }}</span>℃<br />
+          <span>{{ +tem+15 }}</span>℃<br />
           <span>{{ win + ' ' + win_speed }}</span><br />
           <span>PM2.5: {{ air_pm25 }}</span>
           <span>{{ air_level }}</span>
@@ -50,7 +50,8 @@
     name: 'Clock',
     data() {
       return {
-        today: new Date(),
+        timer:null,
+        firstIn: true,
         now: new Date(),
         minute: 0,
         cnt: 0,
@@ -95,7 +96,7 @@
       },
       minute: function (newVal, oldVal) {
         if (newVal !== oldVal) {
-          if (this.now.getMinutes() % 3 === 0) {
+          if (this.now.getMinutes() % 5 === 0) {
             this.$emit('refresh', this.now);
           }
         }
@@ -115,9 +116,12 @@
         return Math.ceil(this.secondProgress * 100);
       },
       date: function () {
-        return this.today.getFullYear() + '-' + this.$options.methods.formatTime(this.today.getMonth()) + '-' + this
+        return this.now.getFullYear() + '-' + this.$options.methods.formatTime(this.now.getMonth() + 1) + '-' + this
           .$options
-          .methods.formatTime(this.today.getDate());
+          .methods.formatTime(this.now.getDate());
+        // return this.today.getFullYear() + '-' + this.$options.methods.formatTime(this.today.getMonth()) + '-' + this
+        //   .$options
+        //   .methods.formatTime(this.today.getDate());
       },
       time: function () {
         return this.$options.methods.formatTime(this.now.getHours()) + ':' + this.$options.methods.formatTime(this.now
@@ -128,14 +132,12 @@
     },
     methods: {
       startClock: function () {
-        setInterval(this.updateClock, 500);
+        this.updateClockFromServer(this);
       },
       updateClock: function () {
-        this.now = new Date();
-        if (this.now.getDate() !== this.today.getDate()) {
-          this.today = this.now;
-        }
-
+        this.now = +this.now;
+        this.now = this.now + 500;
+        this.now = new Date(this.now);
         this.dayProgress = this.now.getHours() / 23;
 
         this.hourProgress = this.now.getMinutes() / 59;
@@ -144,6 +146,38 @@
         this.cnt = this.cnt % 2;
 
         this.minute = this.now.getMinutes();
+      },
+      updateClockFromServer: function (vm) {
+        // 向服务器请求时间
+        vm.$axios.get('http://47.97.221.36:8081/load/Time')
+          .then((res) => {
+            console.log('服务器时间：', res);
+            res = res.data.data;
+            vm.now = new Date(res);
+            // this.now = new Date();
+            // if (this.now.getDate() !== this.today.getDate()) {
+            //   this.today = this.now;
+            // }
+            vm.dayProgress = vm.now.getHours() / 23;
+
+            vm.hourProgress = vm.now.getMinutes() / 59;
+            vm.minuteProgress = vm.now.getSeconds() / 59;
+            vm.secondProgress = (++vm.cnt) / 2 < 1 ? 0 : 1;
+            vm.cnt = vm.cnt % 2;
+
+            vm.minute = vm.now.getMinutes();
+
+            if (vm.firstIn) {
+              // 每0.5秒更新一次表
+              setInterval(vm.updateClock, 500);
+              // 每5min从服务器更新一次时间
+              vm.timer=setInterval(function(){vm.updateClockFromServer(vm)}, 10 * 1000);
+              vm.firstIn = false;
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          })
       },
       formatTime: function (str) {
         str = '0' + str;
@@ -154,7 +188,8 @@
           .then((res) => {
             console.log(res.data)
             this.weather = res.data;
-          }).catch((err) => {
+          })
+          .catch((err) => {
             console.log(err);
           })
       }
@@ -166,6 +201,10 @@
     beforeDestroy() {
       if (this.updateClock) {
         clearInterval(this.updateClock);
+      }
+
+      if (this.timer) {
+        clearInterval(this.timer);
       }
     }
   }

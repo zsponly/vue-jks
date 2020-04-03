@@ -91,7 +91,7 @@
                 <template slot-scope="scope">
                   <div class="rank-display">
                     <div class="bar">
-                      <el-progress :percentage="scope.row.flow" :stroke-width="10" :show-text='false' :color="ranks">
+                      <el-progress :percentage="scope.row.flow/10" :stroke-width="10" :show-text='false' :color="ranks">
                       </el-progress>
                     </div>
                     <span>{{ scope.row.flow }}</span>
@@ -130,7 +130,7 @@
             <template slot-scope="scope">
               <div class="rank-display">
                 <div class="bar">
-                  <el-progress :percentage="scope.row.flow" :stroke-width="10" :show-text='false' :color="ranks">
+                  <el-progress :percentage="scope.row.flow/10" :stroke-width="10" :show-text='false' :color="ranks">
                   </el-progress>
                 </div>
                 <span>{{ scope.row.flow }}</span>
@@ -160,7 +160,7 @@
 
     <!-- 预报开始 -->
     <el-row>
-      <div class="title">交通预报</div>
+      <div class="title">交通预报(5分钟后)</div>
     </el-row>
     <el-row :gutter="20">
       <el-col :span="24">
@@ -175,7 +175,7 @@
               <template slot-scope="scope">
                 <div class="rank-display">
                   <div class="bar">
-                    <el-progress :percentage="scope.row.flow" :stroke-width="10" :show-text='false' :color="ranks">
+                    <el-progress :percentage="scope.row.flow/10" :stroke-width="10" :show-text='false' :color="ranks">
                     </el-progress>
                   </div>
                   <span>{{ scope.row.flow }}</span>
@@ -389,7 +389,7 @@
           });
 
         // 获取路段拥堵预测数据
-        this.$axios.get('http://47.97.221.36:8081/rank/CRankPre/' + 3 + "/" + "CD")
+        this.$axios.get('http://47.97.221.36:8081/rank/CRankPre/' + 5 + "/" + "CD")
           .then((res) => {
             res = res.data.data;
             this.forecastData = [];
@@ -883,7 +883,7 @@
         order = 'C' + order;
         // 然后就可以在这里发请求了
         // 获取预测排名数据
-        this.$axios.get('http://47.97.221.36:8081/rank/CRankPre/' + 3 + "/" + order)
+        this.$axios.get('http://47.97.221.36:8081/rank/CRankPre/' + 5 + "/" + order)
           .then((res) => {
             res = res.data.data;
             this.forecastData = [];
@@ -1018,7 +1018,7 @@
   }
 
   .bar {
-    width: 80%;
+    width: 70%;
     display: inline-block;
   }
 

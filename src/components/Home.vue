@@ -92,12 +92,12 @@
             </SquareRate>
             <SquareRate v-show="!forecastModeOn" :rate="speedCom" :name="'通行速度'" :suffix="'km/h'">
             </SquareRate>
-            <SquareRate v-show="!forecastModeOn" :rate="flowCom" :name="'交通流量'" :suffix="'vec/min'">
+            <SquareRate v-show="!forecastModeOn" :rate="flowCom" :name="'交通流量'" :suffix="'vec/h'">
             </SquareRate>
             <!-- 实时数据结束 -->
 
             <!-- 预测数据开始 -->
-            <SquareRate v-show="forecastModeOn" :rate="flowForecastCom" :name="'交通流量'" :suffix="'vec/min'">
+            <SquareRate v-show="forecastModeOn" :rate="flowForecastCom" :name="'交通流量'" :suffix="'vec/h'">
             </SquareRate>
             <!-- 预测数据结束 -->
           </div>
@@ -285,10 +285,29 @@
     methods: {
       refresh(time) { // 定时5min刷新地图
         this.$options.methods.updateRoutes(this, this.step, this.forecastModeOn);
+        this.$options.methods.updateChart(this, this.step, this.forecastModeOn);
+        this.$options.methods.updateFeatures(this, this.step, this.forecastModeOn);
       },
       // 关闭道路对话框
       onCloseDialog() {
         this.dialogVisible = false;
+      },
+      //刷新当前路网数据
+      updateFeatures(vm, step, forecastModeOn) {
+        vm.$axios.get('http://47.97.221.36:8081/together/featureNow')
+          .then((res) => {
+            res = res.data.data;
+            // console.log('特征数据：', res);
+            vm.featureData.fvratio = res.feature1
+            vm.featureData.largeratio = res.feature2
+            vm.featureData.variance = res.feature3
+            vm.featureData.speed = res.speed
+            vm.featureData.flow = res.count
+            // console.log('道路特征', this.featureData);
+          })
+          .catch((err) => {
+            console.log(err)
+          });
       },
       // 刷新地图
       updateRoutes(vm, step, forecastModeOn) {
@@ -316,12 +335,19 @@
                   newStatus = res[i].prediction;
                 }
                 newStatus = newStatus.situation;
-                if (vm.roads[i].status !== newStatus) {
-                  // 需要刷新
-                  vm.roads[i].status = newStatus;
-                  console.log('刷新' + i + '!');
-                  route.getPolyline().setStrokeColor(vm.statusColor[vm.roads[i].status]);
-                }
+                // if (vm.roads[i].status !== newStatus) {
+                //   // 需要刷新
+                //   vm.roads[i].status = newStatus;
+                //   console.log('刷新' + i + '!');
+                //   route.getPolyline().setStrokeColor(vm.statusColor[vm.roads[i].status]);
+                // }
+                if (forecastModeOn) {
+                    route.getPolyline().setStrokeColor(vm.statusColor[newStatus]);
+                  } else {
+                    vm.roads[i].status = newStatus;
+                    console.log('刷新' + i + '!');
+                    route.getPolyline().setStrokeColor(vm.statusColor[vm.roads[i].status]);
+                  }
               }
             }
           })
@@ -367,8 +393,9 @@
             res = res.data.data; //获取到数据
 
             var date = new Date(res[0].timeLong);
+            // 时间基为当天早8点
             vm.base = date;
-            vm.base.setHours(4, 0, 0);
+            // vm.base.setHours(8, 0, 0);
             vm.base = +vm.base;
 
             for (var i = 0; i < res.length; i++) {
@@ -384,7 +411,7 @@
                 res = res.data.data; //获取到数据
                 var date = new Date(res[0].timeLong);
                 var base = date;
-                base.setHours(4, 0, 0);
+                // base.setHours(8, 0, 0);
                 base = +base;
 
                 for (var i = 0; i < res.length; i++) {
@@ -399,6 +426,7 @@
                 vm.$axios.get('http://47.97.221.36:8081/together/featureNow')
                   .then((res) => {
                     // console.log('态势数据：', res.data);
+                    vm.statusData=[]
                     res = res.data.data;
                     vm.statusData.push({
                       value: res.proportion1,
@@ -438,7 +466,7 @@
                           res = res.data.data;
 
                           vm.forecastData.flow = res.count;
-                          // TODO这里也会影响饼状图显示
+                          // 这里的循环次数也会影响饼状图显示
                           for (var i = 0; i < 5; i++) {
                             vm.forecastData.statusData[i].value = res['proportion' + (i + 1)]
                           }
@@ -525,7 +553,7 @@
             res = res.data.data; //获取到数据
             var date = new Date(res[0].timeLong);
             this.base = date;
-            this.base.setHours(4, 0, 0);
+            // this.base.setHours(4, 0, 0);
             this.base = +this.base;
 
             for (var i = 0; i < res.length; i++) {
@@ -541,7 +569,7 @@
                 res = res.data.data; //获取到数据
                 var date = new Date(res[0].timeLong);
                 var base = date;
-                base.setHours(4, 0, 0);
+                // base.setHours(4, 0, 0);
                 base = +base;
 
                 for (var i = 0; i < res.length; i++) {
@@ -556,6 +584,7 @@
                 this.$axios.get('http://47.97.221.36:8081/together/featureNow')
                   .then((res) => {
                     // console.log('态势数据：', res.data);
+                    this.statusData=[];
                     res = res.data.data;
                     this.statusData.push({
                       value: res.proportion1,
@@ -654,7 +683,7 @@
                 console.log("该路段上周数据：", res);
                 var date = new Date(res[0].timeLong);
                 var base = date;
-                base.setHours(4, 0, 0);
+                // base.setHours(4, 0, 0);
                 base = +base;
 
                 for (var i = 0; i < res.length; i++) {
