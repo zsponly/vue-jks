@@ -14,7 +14,7 @@
     name: 'SquareRate',
     data() {
       return {
-        newRate: 0,
+        newRate: '0',
       }
     },
     props: {

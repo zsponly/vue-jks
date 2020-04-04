@@ -254,10 +254,10 @@
         return this.featureData.speed.toFixed(2);
       },
       flowCom: function () {
-        return this.featureData.flow.toFixed(2);
+        return Math.ceil(this.featureData.flow).toString();
       },
       flowForecastCom: function () {
-        return this.forecastData.flow.toFixed(2);
+        return Math.ceil(this.forecastData.flow).toString();
       }
     },
     watch: {
