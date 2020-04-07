@@ -92,12 +92,12 @@
             </SquareRate>
             <SquareRate v-show="!forecastModeOn" :rate="speedCom" :name="'通行速度'" :suffix="'km/h'">
             </SquareRate>
-            <SquareRate v-show="!forecastModeOn" :rate="flowCom" :name="'交通流量'" :suffix="'vec/h'">
+            <SquareRate v-show="!forecastModeOn" :rate="flowCom" :name="'交通流量'" :suffix="'veh/h'">
             </SquareRate>
             <!-- 实时数据结束 -->
 
             <!-- 预测数据开始 -->
-            <SquareRate v-show="forecastModeOn" :rate="flowForecastCom" :name="'交通流量'" :suffix="'vec/h'">
+            <SquareRate v-show="forecastModeOn" :rate="flowForecastCom" :name="'交通流量'" :suffix="'veh/h'">
             </SquareRate>
             <!-- 预测数据结束 -->
           </div>

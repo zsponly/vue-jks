@@ -87,7 +87,7 @@
               </el-table-column>
               <el-table-column prop="name" label="路段" width="130" align="left">
               </el-table-column>
-              <el-table-column label="流量vec/h" align="left">
+              <el-table-column label="流量veh/h" align="left">
                 <template slot-scope="scope">
                   <div class="rank-display">
                     <div class="bar">
@@ -126,7 +126,7 @@
           </el-table-column>
           <el-table-column prop="name" label="路段" width="180" align="left">
           </el-table-column>
-          <el-table-column label="流量vec/h" align="left" sortable="custom" prop="flow">
+          <el-table-column label="流量veh/h" align="left" sortable="custom" prop="flow">
             <template slot-scope="scope">
               <div class="rank-display">
                 <div class="bar">
@@ -171,7 +171,7 @@
             </el-table-column>
             <el-table-column prop="name" label="路段" width="180" align="left">
             </el-table-column>
-            <el-table-column label="流量vec/h" align="left" sortable="custom" prop="flow">
+            <el-table-column label="流量veh/h" align="left" sortable="custom" prop="flow">
               <template slot-scope="scope">
                 <div class="rank-display">
                   <div class="bar">
