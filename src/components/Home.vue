@@ -768,7 +768,7 @@
             }
           },
           yAxis: {
-            name: '流量(辆/3分钟)',
+            name: '流量(veh/5min)',
             nameLocation: 'center',
             type: 'value',
             boundaryGap: [0, '20%'],
@@ -1141,7 +1141,7 @@
             }
           },
           yAxis: {
-            name: '流量(辆/3分钟)',
+            name: '流量(veh/5min)',
             nameLocation: 'center',
             type: 'value',
             boundaryGap: [0, '20%'],
