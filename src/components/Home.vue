@@ -669,6 +669,7 @@
               this.speedMax.push([item.timeLong, item.speedMax - item.speedMin]);
               this.speedMin.push([item.timeLong, item.speedMin]);
               this.speedAvg.push([item.timeLong, item.speed]);
+              console.log([item.speedMax, item.speedMin, item.speed]);
               if (item.speed < item.speedMin) {
                 console.log("速度异常，平均速度小于最低车速！")
               }
@@ -768,8 +769,9 @@
             }
           },
           yAxis: {
-            name: '流量(veh/5min)',
+            name: '流量(veh/h)',
             nameLocation: 'center',
+            nameGap: 25,
             type: 'value',
             boundaryGap: [0, '20%'],
             splitLine: {
@@ -1024,7 +1026,7 @@
               padding: 10
             },
             type: 'value',
-            boundaryGap: [0, '50%'],
+            boundaryGap: ['20%', '20%'],
             splitLine: {
               show: true,
               lineStyle: {
@@ -1141,8 +1143,9 @@
             }
           },
           yAxis: {
-            name: '流量(veh/5min)',
+            name: '流量(veh/h)',
             nameLocation: 'center',
+            nameGap: 25,
             type: 'value',
             boundaryGap: [0, '20%'],
             splitLine: {
