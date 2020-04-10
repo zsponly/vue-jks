@@ -50,6 +50,7 @@
     name: 'History',
     data() {
       return {
+        // 时间选择器组件功能
         pickerOptions: {
           disabledDate(time) {
             return time.getTime() > Date.now();
