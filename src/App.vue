@@ -27,6 +27,12 @@
 
     <!-- 主体结束 -->
 
+    <!-- 尾部开始 -->
+    <footer>
+      <a href="http://www.beian.miit.gov.cn"><span>皖ICP备20005848号</span></a>
+    </footer>
+    <!-- 尾部结束 -->
+
   </div>
 
 </template>
@@ -103,6 +109,21 @@
     padding: 7% 0;
     box-sizing: border-box;
     overflow: hidden;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+    background-color: #000;
+    text-align: center;
+    margin: 0 auto;
+    z-index: 1000;
+  }
+
+  footer a span {
+    color: #8A8C8F;
   }
 
   .el-menu {

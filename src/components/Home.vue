@@ -731,8 +731,8 @@
           grid: {
             top: '8%',
             left: '5%',
-            right: '5%',
-            bottom: '3%',
+            right: '7%',
+            bottom: '11%',
             containLabel: true
           },
           toolbox: {
@@ -896,7 +896,7 @@
             name: '交通态势分布',
             type: 'pie',
             radius: ['60%', '80%'],
-            center: ['60%', '50%'],
+            center: ['60%', '47%'],
             avoidLabelOverlap: false,
             label: {
               normal: {
@@ -1512,7 +1512,7 @@
 
   .line-chart-wrapper {
     width: 350px;
-    height: 260px;
+    height: 240px;
     float: right;
     box-sizing: border-box;
     border: solid 2px #303030;
