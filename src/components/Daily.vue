@@ -475,6 +475,9 @@
           title: {
             left: 'center',
             text: '处理前',
+            textStyle: {
+              color: '#ccc'
+            }
           },
           toolbox: {
             feature: {
@@ -490,7 +493,15 @@
             splitLine: {
               show: false
             },
-            data: vm.xAxis.tab1
+            data: vm.xAxis.tab1,
+            axisLine: {
+              lineStyle: {
+                color: '#ccc'
+              }
+            },
+            axisLabel: {
+              color: '#ccc',
+            }
           },
           yAxis: {
             type: 'value',
@@ -498,6 +509,14 @@
             max: 120,
             splitLine: {
               show: false
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#ccc'
+              }
+            },
+            axisLabel: {
+              color: '#ccc',
             }
           },
           series: [{
@@ -519,6 +538,9 @@
           title: {
             left: 'center',
             text: '处理后',
+            textStyle: {
+              color: '#ccc'
+            }
           },
           toolbox: {
             feature: {
@@ -534,7 +556,15 @@
             splitLine: {
               show: false
             },
-            data: vm.xAxis.tab1
+            data: vm.xAxis.tab1,
+            axisLine: {
+              lineStyle: {
+                color: '#ccc'
+              }
+            },
+            axisLabel: {
+              color: '#ccc',
+            }
           },
           yAxis: {
             type: 'value',
@@ -542,6 +572,14 @@
             max: 120,
             splitLine: {
               show: false
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#ccc'
+              }
+            },
+            axisLabel: {
+              color: '#ccc',
             }
           },
           series: [{
@@ -567,6 +605,9 @@
           title: {
             left: 'center',
             text: '处理前',
+            textStyle: {
+              color: '#ccc'
+            }
           },
           toolbox: {
             feature: {
@@ -582,7 +623,15 @@
             splitLine: {
               show: false
             },
-            data: vm.xAxis.tab2
+            data: vm.xAxis.tab2,
+            axisLine: {
+              lineStyle: {
+                color: '#ccc'
+              }
+            },
+            axisLabel: {
+              color: '#ccc',
+            }
           },
           yAxis: {
             type: 'value',
@@ -590,6 +639,14 @@
             max: 50,
             splitLine: {
               show: false
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#ccc'
+              }
+            },
+            axisLabel: {
+              color: '#ccc',
             }
           },
           series: [{
@@ -611,6 +668,9 @@
           title: {
             left: 'center',
             text: '处理后',
+            textStyle: {
+              color: '#ccc'
+            }
           },
           toolbox: {
             feature: {
@@ -626,7 +686,15 @@
             splitLine: {
               show: false
             },
-            data: vm.xAxis.tab2
+            data: vm.xAxis.tab2,
+            axisLine: {
+              lineStyle: {
+                color: '#ccc'
+              }
+            },
+            axisLabel: {
+              color: '#ccc',
+            }
           },
           yAxis: {
             type: 'value',
@@ -634,6 +702,14 @@
             max: 50,
             splitLine: {
               show: false
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#ccc'
+              }
+            },
+            axisLabel: {
+              color: '#ccc',
             }
           },
           series: [{
@@ -659,6 +735,9 @@
           title: {
             left: 'center',
             text: '处理前',
+            textStyle: {
+              color: '#ccc'
+            }
           },
           toolbox: {
             feature: {
@@ -671,14 +750,25 @@
           },
           legend: {
             data: ['3-sigma'],
-            top: 50
+            top: 50,
+            textStyle: {
+              color: '#ccc'
+            }
           },
           xAxis: {
             type: 'category',
             splitLine: {
               show: false
             },
-            data: vm.xAxis.tab3
+            data: vm.xAxis.tab3,
+            axisLine: {
+              lineStyle: {
+                color: '#ccc'
+              }
+            },
+            axisLabel: {
+              color: '#ccc',
+            }
           },
           yAxis: {
             type: 'value',
@@ -686,6 +776,14 @@
             max: 100,
             splitLine: {
               show: false
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#ccc'
+              }
+            },
+            axisLabel: {
+              color: '#ccc',
             }
           },
           series: [{
@@ -717,6 +815,9 @@
           title: {
             left: 'center',
             text: '处理后',
+            textStyle: {
+              color: '#ccc'
+            }
           },
           toolbox: {
             feature: {
@@ -729,14 +830,25 @@
           },
           legend: {
             data: ['3-sigma'],
-            top: 50
+            top: 50,
+            textStyle: {
+              color: '#ccc'
+            }
           },
           xAxis: {
             type: 'category',
             splitLine: {
               show: false
             },
-            data: vm.xAxis.tab3
+            data: vm.xAxis.tab3,
+            axisLine: {
+              lineStyle: {
+                color: '#ccc'
+              }
+            },
+            axisLabel: {
+              color: '#ccc',
+            }
           },
           yAxis: {
             type: 'value',
@@ -744,6 +856,14 @@
             max: 100,
             splitLine: {
               show: false
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#ccc'
+              }
+            },
+            axisLabel: {
+              color: '#ccc',
             }
           },
           series: [{
@@ -909,7 +1029,7 @@
         columnIndex
       }) {
         return {
-          'background-color': 'rgba(0, 0, 0, 1)',
+          'background-color': '#202124',
           'color': 'rgba(255, 255, 255, 0.8)',
           'border': 'none'
         }
@@ -919,7 +1039,7 @@
         rowIndex
       }) {
         return {
-          'background-color': 'rgba(0, 0, 0, 1)',
+          'background-color': '#202124',
           'color': '#0077E6',
           'border-bottom': '1px solid #0077E6'
         }
@@ -934,7 +1054,7 @@
     width: 1140px;
     height: auto;
     border-radius: 5px;
-    background-color: #000;
+    background-color: #202124;
     margin: 0 auto;
   }
 
@@ -993,7 +1113,7 @@
   }
 
   .el-progress /deep/ .el-progress-bar__outer {
-    background-color: rgba(0, 0, 0, 1);
+    background-color: #202124;
   }
 
   .el-table,
@@ -1003,7 +1123,7 @@
   .el-table--border::after,
   .el-table--group::after,
   .el-table::before {
-    background-color: rgba(0, 0, 0, 1) !important;
+    background-color: #202124 !important;
   }
 
   .rank-list-forecast {

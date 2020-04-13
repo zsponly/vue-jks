@@ -199,7 +199,7 @@
         columnIndex
       }) {
         return {
-          'background-color': 'rgba(0, 0, 0, 1)',
+          'background-color': '#202124',
           'color': 'rgba(255, 255, 255, 0.8)',
           'border': 'none'
         }
@@ -210,7 +210,7 @@
         rowIndex
       }) {
         return {
-          'background-color': 'rgba(0, 0, 0, 1)',
+          'background-color': '#202124',
           'color': '#0077E6',
           'border-bottom': '1px solid #0077E6'
         }
@@ -234,7 +234,7 @@
     height: 100px;
     margin: 0 auto;
     border-radius: 5px;
-    background-color: #000;
+    background-color: #202124;
   }
 
   .el-row {
@@ -272,7 +272,7 @@
   .el-table--border::after,
   .el-table--group::after,
   .el-table::before {
-    background-color: rgba(0, 0, 0, 1) !important;
+    background-color: #202124 !important;
   }
 
 

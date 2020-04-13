@@ -9,7 +9,7 @@
           <router-link to="/"><span class="home-title">云智行</span></router-link>
 
           <el-menu :default-active="$route.path" class="el-menu-demo" mode="horizontal" @select="handleSelect"
-            active-text-color="#0077E6" background-color="#000" router>
+            active-text-color="#0077E6" background-color="#141516" router>
             <el-menu-item index="/">路段</el-menu-item>
             <el-menu-item index="/float">浮动车</el-menu-item>
             <el-menu-item index="/history">历史数据查询</el-menu-item>
@@ -56,6 +56,10 @@
 </script>
 
 <style>
+  body {
+    text-shadow: none !important;
+  }
+
   .test {
     width: 100vw;
     height: 1000px;
@@ -75,7 +79,7 @@
     left: 0;
     top: 0;
     z-index: 1;
-    background-color: #000;
+    background-color: #141516;
     margin: 0 0 5px;
     z-index: 20;
   }
@@ -116,7 +120,7 @@
     bottom: 0;
     width: 100%;
     height: 20px;
-    background-color: #000;
+    background-color: #202124;
     text-align: center;
     margin: 0 auto;
     z-index: 1000;
