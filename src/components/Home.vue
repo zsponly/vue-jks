@@ -298,11 +298,11 @@
           .then((res) => {
             res = res.data.data;
             // console.log('特征数据：', res);
-            vm.featureData.fvratio = res.feature1
-            vm.featureData.largeratio = res.feature2
-            vm.featureData.variance = res.feature3
-            vm.featureData.speed = res.speed
-            vm.featureData.flow = res.count
+            vm.featureData.fvratio = res.feature1 * 12;
+            vm.featureData.largeratio = res.feature2;
+            vm.featureData.variance = res.feature3;
+            vm.featureData.speed = res.speed;
+            vm.featureData.flow = res.count * 12;
             // console.log('道路特征', this.featureData);
           })
           .catch((err) => {
@@ -400,7 +400,7 @@
 
             for (var i = 0; i < res.length; i++) {
               var item = res[i];
-              vm.todayData.push([item.timeLong, item.count]);
+              vm.todayData.push([item.timeLong, item.count * 12]);
             }
             // console.log('今日交通指数', vm.todayData);
           })
@@ -417,7 +417,7 @@
                 for (var i = 0; i < res.length; i++) {
                   var item = res[i];
                   var offset = item.timeLong - base;
-                  vm.lastWeekData.push([offset + vm.base, item.count]);
+                  vm.lastWeekData.push([offset + vm.base, item.count * 12]);
                 }
                 // console.log('上周同期交通指数', vm.lastWeekData);
               })
@@ -465,9 +465,9 @@
                           //console.log("forcast:",res.data);
                           res = res.data.data;
 
-                          vm.forecastData.flow = res.count;
-                          // 这里的循环次数也会影响饼状图显示
-                          for (var i = 0; i < 5; i++) {
+                          vm.forecastData.flow = res.count * 12;
+                          // TODO这里的循环次数也会影响饼状图显示
+                          for (var i = 0; i < 4; i++) {
                             vm.forecastData.statusData[i].value = res['proportion' + (i + 1)]
                           }
                           vm.$options.methods.drawChart(vm, step, forecastModeOn);
