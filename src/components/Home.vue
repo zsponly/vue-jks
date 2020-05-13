@@ -265,6 +265,7 @@
         // 重新绘制
         this.$options.methods.updateChart(this, this.step, newVal);
         this.$options.methods.updateRoutes(this, this.step, newVal);
+        this.$options.methods.updateFeatures(this, this.step, this.forecastModeOn);
       }
     },
     mounted() {
