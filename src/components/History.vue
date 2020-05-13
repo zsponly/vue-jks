@@ -30,9 +30,9 @@
         </el-table-column>
         <el-table-column prop="name" label="路段" align="left">
         </el-table-column>
-        <el-table-column prop="flow" label="流量" align="left">
+        <el-table-column prop="flow" label="流量(veh/h)" align="left">
         </el-table-column>
-        <el-table-column prop="speed" label="速度" align="left">
+        <el-table-column prop="speed" label="速度(km/h)" align="left">
         </el-table-column>
         <el-table-column prop="status" label="交通状态" align="left">
         </el-table-column>
@@ -175,7 +175,7 @@
             this.searchResult.push({
               id: item.lid,
               name: item.name,
-              flow: item.count,
+              flow: item.count * 12,
               speed: item.speed,
               status: item.situation,
               time: time

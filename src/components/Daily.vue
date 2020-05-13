@@ -357,7 +357,7 @@
               this.roadData.push({
                 id: loads[i].id,
                 name: loads[i].name,
-                flow: loads[i].now.count,
+                flow: loads[i].now.count * 12,
                 speed: loads[i].now.speed,
                 status: loads[i].now.situation
               });
@@ -377,7 +377,7 @@
               this.rankData.push({
                 name: res[i].name,
                 id: res[i].lid,
-                flow: res[i].count,
+                flow: res[i].count * 12,
                 speed: res[i].speed,
                 status: res[i].situation
               })
@@ -397,7 +397,7 @@
               this.forecastData.push({
                 name: res[i].name,
                 id: res[i].lid,
-                flow: res[i].count,
+                flow: res[i].count * 12,
                 status: res[i].situation
               })
             }
@@ -979,7 +979,7 @@
               this.rankData.push({
                 name: res[i].name,
                 id: res[i].lid,
-                flow: res[i].count,
+                flow: res[i].count * 12,
                 speed: res[i].speed,
                 status: res[i].situation
               })
@@ -1011,7 +1011,7 @@
               this.forecastData.push({
                 name: res[i].name,
                 id: res[i].lid,
-                flow: res[i].count,
+                flow: res[i].count * 12,
                 status: res[i].situation
               })
             }

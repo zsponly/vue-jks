@@ -14,7 +14,7 @@
         <li class="levelBtn" style="background-color: #8BD100;">状态二</li>
         <li class="levelBtn" style="background-color: #6701AB;">状态三</li>
         <li class="levelBtn" style="background-color: #FF8000;">状态四</li>
-        <li class="levelBtn" style="background-color: #FF0000;">状态五</li>
+        <!-- <li class="levelBtn" style="background-color: #FF0000;">状态五</li> -->
         <!-- <li class="levelBtn" style="background-color: #C3017C;">状态六</li>
         <li class="levelBtn" style="background-color: #38A800;">状态七</li> -->
       </ul>
@@ -519,7 +519,7 @@
                 end_latitude: loads[i].end.latitude,
                 id: loads[i].id,
                 name: loads[i].name,
-                count: loads[i].now.count,
+                count: loads[i].now.count * 12,
                 speed: loads[i].now.speed,
                 status: loads[i].now.situation
               };
@@ -539,11 +539,11 @@
           .then((res) => {
             res = res.data.data;
             // console.log('特征数据：', res);
-            this.featureData.fvratio = res.feature1
-            this.featureData.largeratio = res.feature2
-            this.featureData.variance = res.feature3
-            this.featureData.speed = res.speed
-            this.featureData.flow = res.count
+            this.featureData.fvratio = res.feature1 * 12;
+            this.featureData.largeratio = res.feature2;
+            this.featureData.variance = res.feature3;
+            this.featureData.speed = res.speed;
+            this.featureData.flow = res.count * 12;
             // console.log('道路特征', this.featureData);
           }).catch((err) => {
             console.log(err)
@@ -559,7 +559,7 @@
 
             for (var i = 0; i < res.length; i++) {
               var item = res[i];
-              this.todayData.push([item.timeLong, item.count]);
+              this.todayData.push([item.timeLong, item.count * 12]);
             }
             // console.log('今日交通指数', this.todayData);
           })
@@ -576,7 +576,7 @@
                 for (var i = 0; i < res.length; i++) {
                   var item = res[i];
                   var offset = item.timeLong - base;
-                  this.lastWeekData.push([offset + this.base, item.count]);
+                  this.lastWeekData.push([offset + this.base, item.count * 12]);
                 }
                 // console.log('上周同期交通指数', this.lastWeekData);
               })
@@ -651,7 +651,7 @@
           this.$axios.get('http://47.97.221.36:8081/together/predictionRoad/' + this.step + '/' + this.selRoad[0].id)
             .then((res) => {
               res = res.data.data;
-              this.selRoad[0].flowForecast = res.prediction.count;
+              this.selRoad[0].flowForecast = res.prediction.count * 12;
               this.selRoad[0].statusForecast = res.prediction.situation;
             })
 
@@ -665,7 +665,7 @@
             console.log("该路段数据：", res);
             for (var i = 0; i < res.length; i++) {
               var item = res[i];
-              this.flowToday.push([item.timeLong, item.count]);
+              this.flowToday.push([item.timeLong, item.count * 12]);
               this.speedMax.push([item.timeLong, item.speedMax - item.speedMin]);
               this.speedMin.push([item.timeLong, item.speedMin]);
               this.speedAvg.push([item.timeLong, item.speed]);
@@ -691,7 +691,7 @@
                 for (var i = 0; i < res.length; i++) {
                   var item = res[i];
                   var offset = item.timeLong - base;
-                  this.flowLastWeek.push([offset + this.base, item.count]);
+                  this.flowLastWeek.push([offset + this.base, item.count * 12]);
                 }
 
                 //折线图
@@ -1231,7 +1231,7 @@
         // 自定义控件
         function LevelLabel() {
           this.defaultAnchor = BMAP_ANCHOR_BOTTOM_LEFT;
-          this.defaultOffset = new BMap.Size(25, 30);
+          this.defaultOffset = new BMap.Size(25, 40);
         }
 
         LevelLabel.prototype = new BMap.Control();
@@ -1335,7 +1335,7 @@
   }
 
   #levelLabelControl {
-    width: 250px;
+    width: 200px;
     height: 20px;
     background-color: #fff;
     border: 1px solid black;
