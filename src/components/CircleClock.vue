@@ -11,7 +11,7 @@
         </div>
 
         <div class="weather-detail">
-          <span>{{ +tem+15 }}</span>℃<br />
+          <span>{{ +tem+5 }}</span>℃<br />
           <span>{{ win + ' ' + win_speed }}</span><br />
           <span>PM2.5: {{ air_pm25 }}</span>
           <span>{{ air_level }}</span>
