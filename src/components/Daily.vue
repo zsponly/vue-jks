@@ -160,7 +160,7 @@
 
     <!-- 预报开始 -->
     <el-row>
-      <div class="title">交通预报(5分钟后)</div>
+      <div class="title">交通预报</div>
     </el-row>
     <el-row :gutter="20">
       <el-col :span="24">
@@ -251,7 +251,7 @@
           color: '#FF0000',
           percentage: 100
         }],
-        statusArr: ['状态一', '状态二', '状态三', '状态四', '状态五'/*, '状态六', '状态七'*/],
+        statusArr: ['状态一', '状态二', '状态三', '状态四'/*, '状态五', '状态六', '状态七'*/],
         selStatus: '', // 要筛选的状态
       }
     },
