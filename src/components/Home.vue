@@ -88,7 +88,7 @@
             </SquareRate>
             <SquareRate v-show="!forecastModeOn" :rate="largeratioCom" :name="'大车比例'" :suffix="'％'">
             </SquareRate>
-            <SquareRate v-show="!forecastModeOn" :rate="varianceCom" :name="'道路流量方差'" :suffix="''">
+            <SquareRate v-show="!forecastModeOn" :rate="varianceCom" :name="'车道流量方差'" :suffix="''">
             </SquareRate>
             <SquareRate v-show="!forecastModeOn" :rate="speedCom" :name="'通行速度'" :suffix="'km/h'">
             </SquareRate>
@@ -1046,7 +1046,7 @@
             }
           },
           series: [{
-            name: '谷值速度',
+            name: '历史速度峰值',
             type: 'line',
             stack: 'speed',
             showSymbol: false,
@@ -1057,7 +1057,7 @@
               width: 0.5
             }
           }, {
-            name: '峰值速度',
+            name: '历史速度谷值',
             type: 'line',
             stack: 'speed',
             areaStyle: {
