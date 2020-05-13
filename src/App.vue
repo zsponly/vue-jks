@@ -89,8 +89,8 @@
     position: absolute;
     font-size: 2em;
     margin: 0;
-    width: 100px;
-    height: 100%;
+    /* width: 200px;
+    height: 100%; */
   }
 
   .container {
