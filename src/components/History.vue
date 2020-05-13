@@ -34,7 +34,7 @@
         </el-table-column>
         <el-table-column prop="speed" label="速度" align="left">
         </el-table-column>
-        <el-table-column prop="status" label="交通态势" align="left">
+        <el-table-column prop="status" label="交通状态" align="left">
         </el-table-column>
         <el-table-column prop="time" label="时间" align="left">
         </el-table-column>

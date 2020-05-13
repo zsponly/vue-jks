@@ -65,9 +65,9 @@
     </el-row>
     <!-- 今日数据结束 -->
 
-    <!-- 交通态势开始 -->
+    <!-- 交通状态开始 -->
     <el-row>
-      <div class="title">交通态势筛选</div>
+      <div class="title">交通状态筛选</div>
     </el-row>
     <el-row :gutter="20">
       <el-col :span="12">
@@ -114,7 +114,7 @@
         </div>
       </el-col>
     </el-row>
-    <!-- 交通态势结束 -->
+    <!-- 交通状态结束 -->
 
     <!-- 排行开始 -->
     <el-row>
@@ -148,7 +148,7 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column label="态势" width="120" align="left">
+          <el-table-column label="状态" width="120" align="left">
             <template slot-scope="scope">
               <StatusLabel :status="+scope.row.status"></StatusLabel>
             </template>
@@ -182,7 +182,7 @@
                 </div>
               </template>
             </el-table-column>
-            <el-table-column label="态势" width="120" align="left">
+            <el-table-column label="状态" width="120" align="left">
               <template slot-scope="scope">
                 <StatusLabel :status="+scope.row.status"></StatusLabel>
               </template>
@@ -234,7 +234,7 @@
           tab3: []
         }, // 处理后的数据
         forecastData: [], // 预报数据
-        statusData: [], // 态势分布饼状图数据
+        statusData: [], // 状态分布饼状图数据
         ranks: [{ // 不同进度对应不同颜色
           color: '#38A800',
           percentage: 20
@@ -251,8 +251,8 @@
           color: '#FF0000',
           percentage: 100
         }],
-        statusArr: ['态势一', '态势二', '态势三', '态势四', '态势五'/*, '态势六', '态势七'*/],
-        selStatus: '', // 要筛选的态势
+        statusArr: ['状态一', '状态二', '状态三', '状态四', '状态五'/*, '状态六', '状态七'*/],
+        selStatus: '', // 要筛选的状态
       }
     },
     computed: {
@@ -406,43 +406,43 @@
             console.log(err);
           });
 
-        // 获取道路态势分布数据
+        // 获取道路状态分布数据
         this.$axios.get('http://47.97.221.36:8081/together/featureNow')
           .then((res) => {
-            console.log('态势数据：', res.data);
+            console.log('状态数据：', res.data);
             res = res.data.data;
             this.statusData.push({
               value: res.proportion1,
-              name: "态势一"
+              name: "状态一"
             })
             this.statusData.push({
               value: res.proportion2,
-              name: "态势二"
+              name: "状态二"
             })
             this.statusData.push({
               value: res.proportion3,
-              name: "态势三"
+              name: "状态三"
             })
             this.statusData.push({
               value: res.proportion4,
-              name: "态势四"
+              name: "状态四"
             })
-            this.statusData.push({
-              value: res.proportion5,
-              name: "态势五"
-            })
+            // this.statusData.push({
+            //   value: res.proportion5,
+            //   name: "状态五"
+            // })
             /*
             this.statusData.push({
               value: res.proportion6,
-              name: "态势六"
+              name: "状态六"
             })
             this.statusData.push({
               value: res.proportion7,
-              name: "态势七"
+              name: "状态七"
             })
             */
 
-            // 绘制态势图
+            // 绘制状态图
             this.drawStatus();
           })
           .catch((err) => {
@@ -914,7 +914,7 @@
             }
           },
           series: [{
-            name: '交通态势分布',
+            name: '交通状态分布',
             type: 'pie',
             radius: ['50%', '80%'],
             center: ['60%', '50%'],

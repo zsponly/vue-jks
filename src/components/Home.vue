@@ -10,13 +10,13 @@
       <div id="home-map" ref="hmap"></div>
       <!-- 自定义组件开始 -->
       <ul id="levelLabelControl">
-        <li class="levelBtn" style="background-color: #00A5C9;">态势一</li>
-        <li class="levelBtn" style="background-color: #8BD100;">态势二</li>
-        <li class="levelBtn" style="background-color: #6701AB;">态势三</li>
-        <li class="levelBtn" style="background-color: #FF8000;">态势四</li>
-        <li class="levelBtn" style="background-color: #FF0000;">态势五</li>
-        <!-- <li class="levelBtn" style="background-color: #C3017C;">态势六</li>
-        <li class="levelBtn" style="background-color: #38A800;">态势七</li> -->
+        <li class="levelBtn" style="background-color: #00A5C9;">状态一</li>
+        <li class="levelBtn" style="background-color: #8BD100;">状态二</li>
+        <li class="levelBtn" style="background-color: #6701AB;">状态三</li>
+        <li class="levelBtn" style="background-color: #FF8000;">状态四</li>
+        <li class="levelBtn" style="background-color: #FF0000;">状态五</li>
+        <!-- <li class="levelBtn" style="background-color: #C3017C;">状态六</li>
+        <li class="levelBtn" style="background-color: #38A800;">状态七</li> -->
       </ul>
       <!-- 自定义组件结束 -->
       <!-- 路段信息展示开始 -->
@@ -24,7 +24,7 @@
         <el-table :data="selRoad" max-height="500" :cell-style="cellStyle" :header-cell-style="rowClass">
           <el-table-column prop="id" label="路段ID" align="left">
           </el-table-column>
-          <el-table-column label="当前态势" align="left">
+          <el-table-column label="当前状态" align="left">
             <template slot-scope="scope">
               <StatusLabel :status="+scope.row.status"></StatusLabel>
             </template>
@@ -34,7 +34,7 @@
               <StatusLabel :msg="+scope.row.flowForecast" :status="0"></StatusLabel>
             </template>
           </el-table-column>
-          <el-table-column v-if="forecastModeOn" label="预测态势" align="left">
+          <el-table-column v-if="forecastModeOn" label="预测状态" align="left">
             <template slot-scope="scope">
               <StatusLabel :status="+scope.row.statusForecast"></StatusLabel>
             </template>
@@ -115,7 +115,7 @@
         </div>
 
         <el-tabs type="border-card" class="line-chart-wrapper bg-transparent">
-          <el-tab-pane label="交通态势分布">
+          <el-tab-pane label="交通状态分布">
             <div id="pie-chart"></div>
           </el-tab-pane>
           <el-tab-pane label="路网车流量趋势">
@@ -169,25 +169,25 @@
           flow: 0,
           statusData: [{
             value: 0,
-            name: "态势一"
+            name: "状态一"
           }, {
             value: 0,
-            name: "态势二"
+            name: "状态二"
           }, {
             value: 0,
-            name: "态势三"
+            name: "状态三"
           }, {
             value: 0,
-            name: "态势四"
+            name: "状态四"
           }, {
             value: 0,
-            name: "态势五"
+            name: "状态五"
           }/*, {
             value: 0,
-            name: "态势六"
+            name: "状态六"
           }, {
             value: 0,
-            name: "态势七"
+            name: "状态七"
           }*/]
         },
         // 总体数据开始
@@ -217,14 +217,14 @@
           flow: 0
         },
         statusColor: {
-          '态势一': '#00A5C9',
-          '态势二': '#8BD100',
-          '态势三': '#6701AB',
-          '态势四': '#FF8000',
-          '态势五': '#FF0000',
+          '状态一': '#00A5C9',
+          '状态二': '#8BD100',
+          '状态三': '#6701AB',
+          '状态四': '#FF8000',
+          '状态五': '#FF0000',
           /*
-          '态势六': '#C3017C',
-          '态势七': '#38A800',
+          '状态六': '#C3017C',
+          '状态七': '#38A800',
           */
           '1': '#00A5C9',
           '2': '#8BD100',
@@ -236,7 +236,7 @@
           '7': '#38A800',
           */
         },
-        statusArr: ['态势一', '态势二', '态势三', '态势四', '态势五'/*, '态势六', '态势七'*/],
+        statusArr: ['状态一', '状态二', '状态三', '状态四', '状态五'/*, '状态六', '状态七'*/],
         statusData: []
       }
     },
@@ -357,7 +357,7 @@
       },
       // 刷新图表
       updateChart(vm, step, forecastModeOn) {
-        // 重新获取路网交通流量趋势图和交通态势分布图的数据并重新绘制
+        // 重新获取路网交通流量趋势图和交通状态分布图的数据并重新绘制
         // 1.清空数据
         vm.todayData = [];
         vm.lastWeekData = [];
@@ -366,25 +366,25 @@
           flow: 0,
           statusData: [{
             value: 0,
-            name: "态势一"
+            name: "状态一"
           }, {
             value: 0,
-            name: "态势二"
+            name: "状态二"
           }, {
             value: 0,
-            name: "态势三"
+            name: "状态三"
           }, {
             value: 0,
-            name: "态势四"
+            name: "状态四"
           }, {
             value: 0,
-            name: "态势五"
+            name: "状态五"
           }/*, {
             value: 0,
-            name: "态势六"
+            name: "状态六"
           }, {
             value: 0,
-            name: "态势七"
+            name: "状态七"
           }*/]
         }
         // 2.获取路网流量数据
@@ -422,40 +422,40 @@
                 // console.log('上周同期交通指数', vm.lastWeekData);
               })
               .then(() => {
-                // 3.获取路网态势分布数据
+                // 3.获取路网状态分布数据
                 vm.$axios.get('http://47.97.221.36:8081/together/featureNow')
                   .then((res) => {
-                    // console.log('态势数据：', res.data);
+                    // console.log('状态数据：', res.data);
                     vm.statusData=[]
                     res = res.data.data;
                     vm.statusData.push({
                       value: res.proportion1,
-                      name: '态势一'
+                      name: '状态一'
                     })
                     vm.statusData.push({
                       value: res.proportion2,
-                      name: '态势二'
+                      name: '状态二'
                     })
                     vm.statusData.push({
                       value: res.proportion3,
-                      name: '态势三'
+                      name: '状态三'
                     })
                     vm.statusData.push({
                       value: res.proportion4,
-                      name: '态势四'
+                      name: '状态四'
                     })
-                    vm.statusData.push({
-                      value: res.proportion5,
-                      name: '态势五'
-                    })
+                    // vm.statusData.push({
+                    //   value: res.proportion5,
+                    //   name: '状态五'
+                    // })
                     /*
                     vm.statusData.push({
                       value: res.proportion6,
-                      name: '态势六'
+                      name: '状态六'
                     })
                     vm.statusData.push({
                       value: res.proportion7,
-                      name: '态势七'
+                      name: '状态七'
                     })
                     */
 
@@ -581,45 +581,45 @@
                 // console.log('上周同期交通指数', this.lastWeekData);
               })
               .then(() => {
-                // 获取道路态势分布数据
+                // 获取道路状态分布数据
                 this.$axios.get('http://47.97.221.36:8081/together/featureNow')
                   .then((res) => {
-                    // console.log('态势数据：', res.data);
+                    // console.log('状态数据：', res.data);
                     this.statusData=[];
                     res = res.data.data;
                     this.statusData.push({
                       value: res.proportion1,
-                      name: "态势一"
+                      name: "状态一"
                     })
                     this.statusData.push({
                       value: res.proportion2,
-                      name: "态势二"
+                      name: "状态二"
                     })
                     this.statusData.push({
                       value: res.proportion3,
-                      name: "态势三"
+                      name: "状态三"
                     })
                     this.statusData.push({
                       value: res.proportion4,
-                      name: "态势四"
+                      name: "状态四"
                     })
-                    this.statusData.push({
-                      value: res.proportion5,
-                      name: "态势五"
-                    })
+                    // this.statusData.push({
+                    //   value: res.proportion5,
+                    //   name: "状态五"
+                    // })
                     /*
                     this.statusData.push({
                       value: res.proportion6,
-                      name: "态势六"
+                      name: "状态六"
                     })
                     this.statusData.push({
                       value: res.proportion7,
-                      name: "态势七"
+                      name: "状态七"
                     })
                     */
                   })
                   .then(() => {
-                    // 绘制路网交通流量趋势图和交通态势分布图
+                    // 绘制路网交通流量趋势图和交通状态分布图
                     this.$options.methods.drawChart(this, this.step, this.forecastModeOn);
                   })
                   .catch((err) => {
@@ -893,7 +893,7 @@
             }
           },
           series: [{
-            name: '交通态势分布',
+            name: '交通状态分布',
             type: 'pie',
             radius: ['60%', '80%'],
             center: ['60%', '47%'],
@@ -924,7 +924,7 @@
           pieOption.title.show = true;
           pieOption.legend.top = 20;
           pieOption.series.push({
-            name: '交通态势分布',
+            name: '交通状态分布',
             type: 'pie',
             radius: ['30%', '40%'],
             center: ['60%', '50%'],
@@ -954,7 +954,7 @@
         pieChart.clear();
         pieChart.setOption(pieOption);
 
-        // TODO筛选路段态势信息
+        // TODO筛选路段状态信息
         pieChart.on('click', function (param) {
           var selStatus = param.data.name;
         });
