@@ -1,0 +1,13 @@
+"filename", "language", "Vue", "JavaScript", "Shell Script", "comment", "blank", "total"
+"d:\交科赛\vue-jks\src\App.vue", "Vue", 147, 0, 0, 2, 23, 172
+"d:\交科赛\vue-jks\src\components\CircleClock.vue", "Vue", 283, 0, 0, 7, 42, 332
+"d:\交科赛\vue-jks\src\components\Daily.vue", "Vue", 1047, 0, 0, 20, 61, 1128
+"d:\交科赛\vue-jks\src\components\FloatCar.vue", "Vue", 108, 0, 0, 6, 7, 121
+"d:\交科赛\vue-jks\src\components\History.vue", "Vue", 241, 0, 0, 15, 20, 276
+"d:\交科赛\vue-jks\src\components\Home.vue", "Vue", 1328, 0, 0, 49, 51, 1428
+"d:\交科赛\vue-jks\src\components\SquareRate.vue", "Vue", 51, 0, 0, 0, 9, 60
+"d:\交科赛\vue-jks\src\components\StatusLabel.vue", "Vue", 84, 0, 0, 0, 15, 99
+"d:\交科赛\vue-jks\src\main.js", "JavaScript", 0, 23, 0, 3, 5, 31
+"d:\交科赛\vue-jks\src\restart.sh", "Shell Script", 0, 0, 7, 4, 3, 14
+"d:\交科赛\vue-jks\src\router\index.js", "JavaScript", 0, 16, 0, 0, 3, 19
+"Total", "-", 3289, 39, 7, 106, 239, 3680

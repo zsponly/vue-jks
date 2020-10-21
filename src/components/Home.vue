@@ -1,11 +1,8 @@
 <template>
-
   <!-- 主界面开始 -->
   <div id="home">
-
     <!-- 页面主体开始 -->
     <div class="content-wrapper">
-
       <!-- 地图开始 -->
       <div id="home-map" ref="hmap"></div>
       <!-- 自定义组件开始 -->
@@ -14,9 +11,6 @@
         <li class="levelBtn" style="background-color: #8BD100;">状态二</li>
         <li class="levelBtn" style="background-color: #6701AB;">状态三</li>
         <li class="levelBtn" style="background-color: #FF8000;">状态四</li>
-        <!-- <li class="levelBtn" style="background-color: #FF0000;">状态五</li> -->
-        <!-- <li class="levelBtn" style="background-color: #C3017C;">状态六</li>
-        <li class="levelBtn" style="background-color: #38A800;">状态七</li> -->
       </ul>
       <!-- 自定义组件结束 -->
       <!-- 路段信息展示开始 -->
@@ -55,9 +49,7 @@
       </el-dialog>
       <!-- 路段信息展示结束 -->
       <!-- 地图结束 -->
-
       <!-- 功能模块开始 -->
-
       <div id="left-boards">
         <el-collapse-transition>
           <div v-show="forecastModeOn">
@@ -71,7 +63,6 @@
             </el-radio-group>
           </div>
         </el-collapse-transition>
-
         <div class="rates bg-transparent">
           <div class="board-title">
             路网交通指数
@@ -81,7 +72,6 @@
               </el-switch>
             </div>
           </div>
-
           <div class="rates-content">
             <!-- 实时数据开始 -->
             <SquareRate v-show="!forecastModeOn" :rate="fvratioCom" :name="'流量速度比'" :suffix="'vec/km'">
@@ -95,25 +85,17 @@
             <SquareRate v-show="!forecastModeOn" :rate="flowCom" :name="'交通流量'" :suffix="'veh/h'">
             </SquareRate>
             <!-- 实时数据结束 -->
-
             <!-- 预测数据开始 -->
             <SquareRate v-show="forecastModeOn" :rate="flowForecastCom" :name="'交通流量'" :suffix="'veh/h'">
             </SquareRate>
             <!-- 预测数据结束 -->
           </div>
-
         </div>
-
       </div>
-
       <div id="right-boards">
-
         <div class="weather-clock">
-
           <CircleClock @refresh="refresh"></CircleClock>
-
         </div>
-
         <el-tabs type="border-card" class="line-chart-wrapper bg-transparent">
           <el-tab-pane label="交通状态分布">
             <div id="pie-chart"></div>
@@ -122,17 +104,12 @@
             <div id="line-chart"></div>
           </el-tab-pane>
         </el-tabs>
-
       </div>
-
       <!-- 功能模块结束 -->
-
     </div>
     <!-- 页面主体结束 -->
-
   </div>
   <!-- 主界面结束 -->
-
 </template>
 
 <script>
@@ -179,29 +156,19 @@
           }, {
             value: 0,
             name: "状态四"
-          }/*, {
-            value: 0,
-            name: "状态五"
-          }, {
-            value: 0,
-            name: "状态六"
-          }, {
-            value: 0,
-            name: "状态七"
-          }*/]
+          }]
         },
-        // 总体数据开始
+        // 总体数据
         todayData: [],
         lastWeekData: [],
-        // 总体数据结束
-        // 选中道路数据开始
+        // 选中道路数据
         speedMax: [],
         speedMin: [],
         speedAvg: [],
         speed85: [],
         flowToday: [],
         flowLastWeek: [],
-        base: 0, // 时间基
+        base: 0, // 时间基数
         // 选中道路数据结束
         map: null,
         center: {
@@ -221,22 +188,12 @@
           '状态二': '#8BD100',
           '状态三': '#6701AB',
           '状态四': '#FF8000',
-          /*
-          '状态五': '#FF0000',
-          '状态六': '#C3017C',
-          '状态七': '#38A800',
-          */
           '1': '#00A5C9',
           '2': '#8BD100',
           '3': '#6701AB',
           '4': '#FF8000',
-          /*
-          '5': '#FF0000',
-          '6': '#C3017C',
-          '7': '#38A800',
-          */
         },
-        statusArr: ['状态一', '状态二', '状态三', '状态四'/*, '状态五', '状态六', '状态七'*/],
+        statusArr: ['状态一', '状态二', '状态三', '状态四'],
         statusData: []
       }
     },
@@ -336,12 +293,6 @@
                   newStatus = res[i].prediction;
                 }
                 newStatus = newStatus.situation;
-                // if (vm.roads[i].status !== newStatus) {
-                //   // 需要刷新
-                //   vm.roads[i].status = newStatus;
-                //   console.log('刷新' + i + '!');
-                //   route.getPolyline().setStrokeColor(vm.statusColor[vm.roads[i].status]);
-                // }
                 if (forecastModeOn) {
                     route.getPolyline().setStrokeColor(vm.statusColor[newStatus]);
                   } else {
@@ -377,33 +328,20 @@
           }, {
             value: 0,
             name: "状态四"
-          }/*, {
-            value: 0,
-            name: "状态五"
-          }, {
-            value: 0,
-            name: "状态六"
-          }, {
-            value: 0,
-            name: "状态七"
-          }*/]
+          }]
         }
         // 2.获取路网流量数据
         vm.$axios.get('http://47.97.221.36:8081/together/countNowaday')
           .then((res) => {
             res = res.data.data; //获取到数据
-
             var date = new Date(res[0].timeLong);
             // 时间基为当天早8点
             vm.base = date;
-            // vm.base.setHours(8, 0, 0);
             vm.base = +vm.base;
-
             for (var i = 0; i < res.length; i++) {
               var item = res[i];
               vm.todayData.push([item.timeLong, item.count * 12]);
             }
-            // console.log('今日交通指数', vm.todayData);
           })
           .then(() => {
             // 2.获取路网上周同期流量数据
@@ -412,21 +350,17 @@
                 res = res.data.data; //获取到数据
                 var date = new Date(res[0].timeLong);
                 var base = date;
-                // base.setHours(8, 0, 0);
                 base = +base;
-
                 for (var i = 0; i < res.length; i++) {
                   var item = res[i];
                   var offset = item.timeLong - base;
                   vm.lastWeekData.push([offset + vm.base, item.count * 12]);
                 }
-                // console.log('上周同期交通指数', vm.lastWeekData);
               })
               .then(() => {
                 // 3.获取路网状态分布数据
                 vm.$axios.get('http://47.97.221.36:8081/together/featureNow')
                   .then((res) => {
-                    // console.log('状态数据：', res.data);
                     vm.statusData=[]
                     res = res.data.data;
                     vm.statusData.push({
@@ -445,29 +379,12 @@
                       value: res.proportion4,
                       name: '状态四'
                     })
-                    // vm.statusData.push({
-                    //   value: res.proportion5,
-                    //   name: '状态五'
-                    // })
-                    /*
-                    vm.statusData.push({
-                      value: res.proportion6,
-                      name: '状态六'
-                    })
-                    vm.statusData.push({
-                      value: res.proportion7,
-                      name: '状态七'
-                    })
-                    */
 
                     if (forecastModeOn) { // 若开启预测模式则同时更新预测数据
                       vm.$axios.get('http://47.97.221.36:8081/together/featurePre/' + vm.step)
                         .then((res) => {
-                          //console.log("forcast:",res.data);
                           res = res.data.data;
-
                           vm.forecastData.flow = res.count * 12;
-                          // TODO这里的循环次数也会影响饼状图显示
                           for (var i = 0; i < 4; i++) {
                             vm.forecastData.statusData[i].value = res['proportion' + (i + 1)]
                           }
@@ -511,7 +428,6 @@
         this.$axios.get('http://47.97.221.36:8081/load/now')
           .then((res) => {
             var loads = res.data.data;
-            // console.log('道路流量数据:', loads);
             for (var i = 0; i < loads.length; i++) {
               this.roads[i] = {
                 start_longitude: loads[i].start.longitude,
@@ -539,13 +455,11 @@
         this.$axios.get('http://47.97.221.36:8081/together/featureNow')
           .then((res) => {
             res = res.data.data;
-            // console.log('特征数据：', res);
             this.featureData.fvratio = res.feature1 * 12;
             this.featureData.largeratio = res.feature2;
             this.featureData.variance = res.feature3;
             this.featureData.speed = res.speed;
             this.featureData.flow = res.count * 12;
-            // console.log('道路特征', this.featureData);
           }).catch((err) => {
             console.log(err)
           });
@@ -555,14 +469,12 @@
             res = res.data.data; //获取到数据
             var date = new Date(res[0].timeLong);
             this.base = date;
-            // this.base.setHours(4, 0, 0);
             this.base = +this.base;
 
             for (var i = 0; i < res.length; i++) {
               var item = res[i];
               this.todayData.push([item.timeLong, item.count * 12]);
             }
-            // console.log('今日交通指数', this.todayData);
           })
           .then(() => {
             // 请求上周同期数据
@@ -571,7 +483,6 @@
                 res = res.data.data; //获取到数据
                 var date = new Date(res[0].timeLong);
                 var base = date;
-                // base.setHours(4, 0, 0);
                 base = +base;
 
                 for (var i = 0; i < res.length; i++) {
@@ -579,13 +490,10 @@
                   var offset = item.timeLong - base;
                   this.lastWeekData.push([offset + this.base, item.count * 12]);
                 }
-                // console.log('上周同期交通指数', this.lastWeekData);
               })
               .then(() => {
-                // 获取道路状态分布数据
                 this.$axios.get('http://47.97.221.36:8081/together/featureNow')
                   .then((res) => {
-                    // console.log('状态数据：', res.data);
                     this.statusData=[];
                     res = res.data.data;
                     this.statusData.push({
@@ -604,20 +512,6 @@
                       value: res.proportion4,
                       name: "状态四"
                     })
-                    // this.statusData.push({
-                    //   value: res.proportion5,
-                    //   name: "状态五"
-                    // })
-                    /*
-                    this.statusData.push({
-                      value: res.proportion6,
-                      name: "状态六"
-                    })
-                    this.statusData.push({
-                      value: res.proportion7,
-                      name: "状态七"
-                    })
-                    */
                   })
                   .then(() => {
                     // 绘制路网交通流量趋势图和交通状态分布图
@@ -646,19 +540,14 @@
         this.flowLastWeek = [];
         this.selRoad[0].flowForecast = 0;
         this.selRoad[0].statusForecast = 0;
-
         if (this.forecastModeOn) {
-
           this.$axios.get('http://47.97.221.36:8081/together/predictionRoad/' + this.step + '/' + this.selRoad[0].id)
             .then((res) => {
               res = res.data.data;
               this.selRoad[0].flowForecast = res.prediction.count * 12;
               this.selRoad[0].statusForecast = res.prediction.situation;
             })
-
-          console.log('选中路段：', this.selRoad);
         }
-
         // 获取道路今日数据
         this.$axios.get('http://47.97.221.36:8081/load/queryWholedayByLid/' + this.selRoad[0].id)
           .then((res) => {
@@ -675,7 +564,6 @@
                 console.log("速度异常，平均速度小于最低车速！")
               }
             }
-
             this.$options.methods.drawSelRoadSpeedChart(this);
           })
           .then(() => {
@@ -686,15 +574,12 @@
                 console.log("该路段上周数据：", res);
                 var date = new Date(res[0].timeLong);
                 var base = date;
-                // base.setHours(4, 0, 0);
                 base = +base;
-
                 for (var i = 0; i < res.length; i++) {
                   var item = res[i];
                   var offset = item.timeLong - base;
                   this.flowLastWeek.push([offset + this.base, item.count * 12]);
                 }
-
                 //折线图
                 this.$options.methods.drawSelRoadFlowChart(this);
               })
@@ -712,7 +597,6 @@
       drawChart(vm, step, forecastModeOn) {
         let lineChart = vm.$echarts.init(document.getElementById('line-chart'));
         let pieChart = vm.$echarts.init(document.getElementById('pie-chart'));
-
         // 折线图配置
         let lineOption = {
           tooltip: {
@@ -955,7 +839,6 @@
         pieChart.clear();
         pieChart.setOption(pieOption);
 
-        // TODO筛选路段状态信息
         pieChart.on('click', function (param) {
           var selStatus = param.data.name;
         });
@@ -1211,7 +1094,6 @@
         };
         flowChart.clear();
         flowChart.setOption(flowOption);
-        console.log('绘制完毕！');
       },
       initMap(vm) {
         vm.map = new BMap.Map(vm.$refs.hmap);
@@ -1243,9 +1125,7 @@
 
           return div;
         }
-
         var levelLabelControl = new LevelLabel();
-
         vm.map.addControl(levelLabelControl);
       },
       getDrive(index, vm) {
@@ -1262,7 +1142,6 @@
             });
           },
           onPolylinesSet(routes) {
-            // routes.length = 1
             var route = routes[0];
             // 保存结果
             vm.mapRoutes[index] = routes[0];
@@ -1546,5 +1425,4 @@
   .bg-transparent {
     background: rgba(0, 0, 0, 0.5);
   }
-
 </style>

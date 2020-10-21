@@ -1,13 +1,10 @@
 <template>
-
   <div id="app">
-
     <!-- 头部开始 -->
     <div class="headerWrapper">
       <header class="header">
         <div class="container">
           <router-link to="/"><span class="home-title">云智行</span></router-link>
-
           <el-menu :default-active="$route.path" class="el-menu-demo" mode="horizontal" @select="handleSelect"
             active-text-color="#0077E6" background-color="#141516" router>
             <el-menu-item index="/">路段</el-menu-item>
@@ -19,22 +16,17 @@
       </header>
     </div>
     <!-- 头部结束 -->
-
     <!-- 主体开始 -->
     <div class="content">
       <router-view></router-view>
     </div>
-
     <!-- 主体结束 -->
-
     <!-- 尾部开始 -->
     <footer>
       <a href="http://www.beian.miit.gov.cn"><span>皖ICP备20005848号</span></a>
     </footer>
     <!-- 尾部结束 -->
-
   </div>
-
 </template>
 
 <script>
@@ -52,7 +44,6 @@
       }
     }
   }
-
 </script>
 
 <style>

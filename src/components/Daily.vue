@@ -80,7 +80,6 @@
       <el-col :span="12">
         <div class="road-list-wrapper">
           <div class="road-list">
-            <!-- 这里的话就不提供排名了，按照默认顺序来，后端是什么顺序，前端就是什么顺序 -->
             <el-table ref="roadsTable" :data="roadDataCom" height="400" max-height="400" :cell-style="cellStyle"
               :header-cell-style="rowClass">
               <el-table-column prop="id" label="路段ID" width="100" align="left">
@@ -251,7 +250,7 @@
           color: '#FF0000',
           percentage: 100
         }],
-        statusArr: ['状态一', '状态二', '状态三', '状态四'/*, '状态五', '状态六', '状态七'*/],
+        statusArr: ['状态一', '状态二', '状态三', '状态四'],
         selStatus: '', // 要筛选的状态
       }
     },
@@ -427,21 +426,6 @@
               value: res.proportion4,
               name: "状态四"
             })
-            // this.statusData.push({
-            //   value: res.proportion5,
-            //   name: "状态五"
-            // })
-            /*
-            this.statusData.push({
-              value: res.proportion6,
-              name: "状态六"
-            })
-            this.statusData.push({
-              value: res.proportion7,
-              name: "状态七"
-            })
-            */
-
             // 绘制状态图
             this.drawStatus();
           })
@@ -968,8 +952,6 @@
         } else {
           order = 'S' + order;
         }
-
-        // 然后就可以在这里发请求了
         // 获取实时排名数据
         this.$axios.get('http://47.97.221.36:8081/rank/CSRank/' + order)
           .then((res) => {

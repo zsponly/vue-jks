@@ -1,12 +1,8 @@
 <template>
   <div id="float">
-
     <div class="fmap-wrapper">
-
       <div id="float-map" ref="fmap"></div>
-
     </div>
-
   </div>
 </template>
 
@@ -37,9 +33,7 @@
       load() {
         this.$axios.get("http://47.97.221.36:8081/car/now")
           .then((res) => { // 用箭头函数的形式，内部this指向vue对象
-            
             res = res.data.data;
-            // 我这里的heat.json是对象，没有列表形式的，没有测试，但是下面的代码是我按列表写的
             for (var i = 0; i < res.length; i++) {
               var point = res[i].position;
               this.floats.push({
@@ -65,17 +59,13 @@
       },
       initMap(vm) {
         // 引入百度地图可视化库
-        // npm install mapv, mapvgl
-        // require here
         vm.mapv = require('mapv');
         vm.mapvgl = require('mapvgl');
         vm.three = require('../../node_modules/mapvgl/dist/mapvgl.threelayers.min.js');
         var darkStyle = require('../../static/js/darkStyle');
         console.log(darkStyle);
-
         // 初始化地图底图
         vm.map = new BMapGL.Map(vm.$refs.fmap, darkStyle.default);
-
         let point = new BMapGL.Point(vm.center.lng, vm.center.lat);
         vm.map.centerAndZoom(point, vm.zoom);
         vm.map.enableScrollWheelZoom(true);
@@ -87,7 +77,6 @@
         var view = new vm.mapvgl.View({
           map: vm.map
         });
-
         // 热力图图层
         vm.heatmap = new vm.mapvgl.HeatmapLayer({
           size: 60, // 单个点绘制大小

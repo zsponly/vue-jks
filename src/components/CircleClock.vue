@@ -50,7 +50,7 @@
     name: 'Clock',
     data() {
       return {
-        timer:null,
+        timer: null,
         firstIn: true,
         now: new Date(),
         minute: 0,
@@ -119,9 +119,6 @@
         return this.now.getFullYear() + '-' + this.$options.methods.formatTime(this.now.getMonth() + 1) + '-' + this
           .$options
           .methods.formatTime(this.now.getDate());
-        // return this.today.getFullYear() + '-' + this.$options.methods.formatTime(this.today.getMonth()) + '-' + this
-        //   .$options
-        //   .methods.formatTime(this.today.getDate());
       },
       time: function () {
         return this.$options.methods.formatTime(this.now.getHours()) + ':' + this.$options.methods.formatTime(this.now
@@ -154,10 +151,6 @@
             console.log('服务器时间：', res);
             res = res.data.data;
             vm.now = new Date(res);
-            // this.now = new Date();
-            // if (this.now.getDate() !== this.today.getDate()) {
-            //   this.today = this.now;
-            // }
             vm.dayProgress = vm.now.getHours() / 23;
 
             vm.hourProgress = vm.now.getMinutes() / 59;
@@ -171,7 +164,9 @@
               // 每0.5秒更新一次表
               setInterval(vm.updateClock, 500);
               // 每5min从服务器更新一次时间
-              vm.timer=setInterval(function(){vm.updateClockFromServer(vm)}, 10 * 1000);
+              vm.timer = setInterval(function () {
+                vm.updateClockFromServer(vm)
+              }, 10 * 1000);
               vm.firstIn = false;
             }
           })

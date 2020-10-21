@@ -105,15 +105,11 @@
             console.log(err);
           })
       },
-      // 这个不用管
       querySearch(queryString, cb) {
         var roads = this.roads;
         var results = queryString ? roads.filter(this.createFilter(queryString)) : roads;
-        // 调用 callback 返回建议列表的数据
-        console.log('搜索提示集', results);
         cb(results);
       },
-      // 也不用管
       createFilter(queryString) {
         return (road) => {
           return road.name.match(queryString);
@@ -148,7 +144,6 @@
         }
         this.searchResult=[];
         // 时间格式化
-
         var start = new Date(this.date);
         var end = new Date(this.date);
         
@@ -157,8 +152,6 @@
         
         start=+start;
         end=+end;
-        // start = this.$options.methods.formatTime(start);  // 开始时间，字符串
-        // end = this.$options.methods.formatTime(end);      // 结束时间，字符串
         // 向后台请求要查询的数据
         // 开始时间:start;结束时间:end;路段名:this.road;路段ID:this.queryID;
         var url='http://47.97.221.36:8081/load/query/'+start+'A'+end+'/'+this.queryID
@@ -274,7 +267,6 @@
   .el-table::before {
     background-color: #202124 !important;
   }
-
 
   .el-table {
     border-radius: 5px;

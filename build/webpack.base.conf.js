@@ -17,7 +17,11 @@ module.exports = {
   },
   externals: {
     'BMap': 'BMap',
-    'BMapGL': 'BMapGL'
+    'BMapGL': 'BMapGL',
+    vue: 'Vue',
+    'vue-router': 'VueRouter',
+    axios: 'axios',
+    echarts: 'echarts'
   },
   output: {
     path: config.build.assetsRoot,
