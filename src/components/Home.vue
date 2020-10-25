@@ -34,7 +34,8 @@
             </template>
           </el-table-column>
         </el-table>
-        <el-tabs type="border-card" class="road-analysis-wrapper bg-transparent" v-loading="selRoad[0].loading"
+        <!-- <el-tabs type="border-card" class="road-analysis-wrapper bg-transparent" v-loading="selRoad[0].loading" -->
+        <el-tabs type="border-card" class="road-analysis-wrapper bg-transparent"
           element-loading-text="拼命加载中..." element-loading-background="rgba(0, 0, 0, 0.8)">
           <el-tab-pane label="路段流量分析">
             <div id="flow-chart"></div>
