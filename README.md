@@ -1,6 +1,6 @@
 # vue-jks
 
-> A Vue.js project
+> 武汉理工大学云智行团队第十五届交通科技大赛国家二等奖获奖项目
 
 ## Build Setup
 
